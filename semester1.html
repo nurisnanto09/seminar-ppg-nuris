@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refleksi Semester 1 - E-Portfolio PPG UNY</title>
+    <meta name="description" content="Refleksi mata kuliah semester 1 PPG Informatika UNY oleh Nur Isnanto Nugroho.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ========== PAGE HERO ========== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .page-hero__back {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--white-80);
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .page-hero__back:hover {
+            color: var(--white);
+        }
+
+        .page-hero__label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-lime);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero__title {
+            font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 400;
+            color: var(--white);
+            letter-spacing: 4px;
+            line-height: 1;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero__subtitle {
+            font-size: 1rem;
+            color: var(--white-80);
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== TAB NAVIGATION ========== */
+        .tab-nav {
+            background: var(--white);
+            padding: 0 24px;
+            border-bottom: 1px solid var(--gray-100);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            overflow-x: auto;
+        }
+
+        .tab-nav__inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 18px 24px;
+            font-family: var(--font);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--blue-primary);
+            border-radius: 3px 3px 0 0;
+            transition: width 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--dark);
+        }
+
+        .tab-btn.active {
+            color: var(--blue-primary);
+            font-weight: 700;
+        }
+
+        .tab-btn.active::after {
+            width: 100%;
+        }
+
+        /* ========== TAB CONTENT ========== */
+        .tab-content {
+            background: var(--gray-50);
+            min-height: 60vh;
+            padding: 0 24px;
+            transition: background 0.3s ease;
+        }
+
+        .tab-panel {
+            display: none;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeInPanel 0.5s ease both;
+        }
+
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-panel__header {
+            margin-bottom: 32px;
+        }
+
+        .tab-panel__num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--blue-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .tab-panel__title {
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.2;
+            transition: color 0.3s ease;
+        }
+
+        .tab-panel__card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tab-panel__card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            padding-left: 16px;
+            border-left: 4px solid var(--blue-primary);
+            transition: color 0.3s ease;
+        }
+
+        .tab-panel__card p {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+        }
+
+        .tab-panel__card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== DARK MODE ========== */
+        body.dark .page-hero {
+            background: linear-gradient(135deg, #0e2040, #060f1a);
+        }
+
+        body.dark .tab-nav {
+            background: #0b1929;
+            border-bottom-color: rgba(255,255,255,0.06);
+        }
+
+        body.dark .tab-btn {
+            color: var(--gray-500);
+        }
+
+        body.dark .tab-btn:hover {
+            color: var(--gray-300);
+        }
+
+        body.dark .tab-btn.active {
+            color: var(--accent-lime);
+        }
+
+        body.dark .tab-btn.active::after {
+            background: var(--accent-lime);
+        }
+
+        body.dark .tab-content {
+            background: #0a1320;
+        }
+
+        body.dark .tab-panel__num {
+            color: var(--accent-lime);
+        }
+
+        body.dark .tab-panel__title {
+            color: var(--gray-100);
+        }
+
+        body.dark .tab-panel__card {
+            background: #111c2e;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+        }
+
+        body.dark .tab-panel__card h3 {
+            color: var(--gray-200);
+            border-left-color: var(--accent-lime);
+        }
+
+        body.dark .tab-panel__card p {
+            color: rgba(255,255,255,0.55);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 70px 24px 40px;
+            }
+
+            .tab-btn {
+                padding: 14px 16px;
+                font-size: 0.8rem;
+            }
+
+            .tab-panel__card {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HERO ========== -->
+    <header class="page-hero">
+        <a href="index.html" class="page-hero__back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            Kembali
+        </a>
+        <p class="page-hero__label">Semester 1</p>
+        <h1 class="page-hero__title">Refleksi Mata Kuliah</h1>
+        <p class="page-hero__subtitle">Dokumentasi refleksi dari 6 mata kuliah yang ditempuh pada semester pertama PPG.</p>
+    </header>
+
+    <!-- ========== TAB NAVIGATION ========== -->
+    <nav class="tab-nav">
+        <div class="tab-nav__inner">
+            <button class="tab-btn active" data-tab="mk1">Matkul 1</button>
+            <button class="tab-btn" data-tab="mk2">Matkul 2</button>
+            <button class="tab-btn" data-tab="mk3">Matkul 3</button>
+            <button class="tab-btn" data-tab="mk4">Matkul 4</button>
+            <button class="tab-btn" data-tab="mk5">Matkul 5</button>
+            <button class="tab-btn" data-tab="mk6">Matkul 6</button>
+        </div>
+    </nav>
+
+    <!-- ========== TAB CONTENT ========== -->
+    <section class="tab-content">
+
+        <!-- Matkul 1 -->
+        <div class="tab-panel active" id="mk1">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">01 / 06</p>
+                <h2 class="tab-panel__title">Matkul 1</h2>
+            </div>
+            <div class="tab-panel__card">
+                <h3>Deskripsi Mata Kuliah</h3>
+                <p>Tambahkan deskripsi mata kuliah di sini. Jelaskan tujuan pembelajaran, capaian yang diharapkan, dan gambaran umum materi yang dipelajari.</p>
+                <h3>Refleksi Pembelajaran</h3>
+                <p>Tuliskan refleksi Anda mengenai proses pembelajaran yang telah dilalui. Apa saja tantangan, pencapaian, dan pelajaran penting yang didapatkan dari mata kuliah ini?</p>
+                <h3>Bukti Artefak</h3>
+                <p>Sertakan bukti artefak seperti tugas, proyek, atau dokumentasi lainnya yang mendukung refleksi Anda. (Tambahkan gambar, link, atau file pendukung di sini).</p>
+            </div>
+        </div>
+
+        <!-- Matkul 2 -->
+        <div class="tab-panel" id="mk2">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">02 / 06</p>
+                <h2 class="tab-panel__title">Matkul 2</h2>
+            </div>
+            <div class="tab-panel__card">
+                <h3>Deskripsi Mata Kuliah</h3>
+                <p>Tambahkan deskripsi mata kuliah di sini. Jelaskan tujuan pembelajaran, capaian yang diharapkan, dan gambaran umum materi yang dipelajari.</p>
+                <h3>Refleksi Pembelajaran</h3>
+                <p>Tuliskan refleksi Anda mengenai proses pembelajaran yang telah dilalui. Apa saja tantangan, pencapaian, dan pelajaran penting yang didapatkan dari mata kuliah ini?</p>
+                <h3>Bukti Artefak</h3>
+                <p>Sertakan bukti artefak seperti tugas, proyek, atau dokumentasi lainnya yang mendukung refleksi Anda.</p>
+            </div>
+        </div>
+
+        <!-- Matkul 3 -->
+        <div class="tab-panel" id="mk3">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">03 / 06</p>
+                <h2 class="tab-panel__title">Matkul 3</h2>
+            </div>
+            <div class="tab-panel__card">
+                <h3>Deskripsi Mata Kuliah</h3>
+                <p>Tambahkan deskripsi mata kuliah di sini. Jelaskan tujuan pembelajaran, capaian yang diharapkan, dan gambaran umum materi yang dipelajari.</p>
+                <h3>Refleksi Pembelajaran</h3>
+                <p>Tuliskan refleksi Anda mengenai proses pembelajaran yang telah dilalui. Apa saja tantangan, pencapaian, dan pelajaran penting yang didapatkan dari mata kuliah ini?</p>
+                <h3>Bukti Artefak</h3>
+                <p>Sertakan bukti artefak seperti tugas, proyek, atau dokumentasi lainnya yang mendukung refleksi Anda.</p>
+            </div>
+        </div>
+
+        <!-- Matkul 4 -->
+        <div class="tab-panel" id="mk4">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">04 / 06</p>
+                <h2 class="tab-panel__title">Matkul 4</h2>
+            </div>
+            <div class="tab-panel__card">
+                <h3>Deskripsi Mata Kuliah</h3>
+                <p>Tambahkan deskripsi mata kuliah di sini. Jelaskan tujuan pembelajaran, capaian yang diharapkan, dan gambaran umum materi yang dipelajari.</p>
+                <h3>Refleksi Pembelajaran</h3>
+                <p>Tuliskan refleksi Anda mengenai proses pembelajaran yang telah dilalui. Apa saja tantangan, pencapaian, dan pelajaran penting yang didapatkan dari mata kuliah ini?</p>
+                <h3>Bukti Artefak</h3>
+                <p>Sertakan bukti artefak seperti tugas, proyek, atau dokumentasi lainnya yang mendukung refleksi Anda.</p>
+            </div>
+        </div>
+
+        <!-- Matkul 5 -->
+        <div class="tab-panel" id="mk5">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">05 / 06</p>
+                <h2 class="tab-panel__title">Matkul 5</h2>
+            </div>
+            <div class="tab-panel__card">
+                <h3>Deskripsi Mata Kuliah</h3>
+                <p>Tambahkan deskripsi mata kuliah di sini. Jelaskan tujuan pembelajaran, capaian yang diharapkan, dan gambaran umum materi yang dipelajari.</p>
+                <h3>Refleksi Pembelajaran</h3>
+                <p>Tuliskan refleksi Anda mengenai proses pembelajaran yang telah dilalui. Apa saja tantangan, pencapaian, dan pelajaran penting yang didapatkan dari mata kuliah ini?</p>
+                <h3>Bukti Artefak</h3>
+                <p>Sertakan bukti artefak seperti tugas, proyek, atau dokumentasi lainnya yang mendukung refleksi Anda.</p>
+            </div>
+        </div>
+
+        <!-- Matkul 6 -->
+        <div class="tab-panel" id="mk6">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">06 / 06</p>
+                <h2 class="tab-panel__title">Matkul 6</h2>
+            </div>
+            <div class="tab-panel__card">
+                <h3>Deskripsi Mata Kuliah</h3>
+                <p>Tambahkan deskripsi mata kuliah di sini. Jelaskan tujuan pembelajaran, capaian yang diharapkan, dan gambaran umum materi yang dipelajari.</p>
+                <h3>Refleksi Pembelajaran</h3>
+                <p>Tuliskan refleksi Anda mengenai proses pembelajaran yang telah dilalui. Apa saja tantangan, pencapaian, dan pelajaran penting yang didapatkan dari mata kuliah ini?</p>
+                <h3>Bukti Artefak</h3>
+                <p>Sertakan bukti artefak seperti tugas, proyek, atau dokumentasi lainnya yang mendukung refleksi Anda.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p>&copy; 2026 Nur Isnanto Nugroho - Portofolio Seminar PPG.</p>
+    </footer>
+
+    <script>
+        // ========== TAB SWITCHING ==========
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+
+                // Update buttons
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update panels
+                tabPanels.forEach(p => p.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+
+                // Scroll tab into view on mobile
+                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            });
+        });
+
+        // ========== DARK MODE SYNC ==========
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark');
+        }
+    </script>
+
+</body>
+</html>
