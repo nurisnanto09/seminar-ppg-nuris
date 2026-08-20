@@ -157,15 +157,13 @@ body.loaded .hero__profile-card {
 }
 
 body.loaded .floating-tag--guru {
-    animation: heroFadeLeft 0.6s 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-body.loaded .floating-tag--open {
-    animation: heroFadeRight 0.6s 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: heroFadeLeft 0.6s 0.9s cubic-bezier(0.16, 1, 0.3, 1) both,
+               guruFloat 3.5s ease-in-out 1.5s infinite;
 }
 
 body.loaded .hero__role-badge {
-    animation: heroFadeUp 0.6s 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: heroFadeUp 0.6s 1.1s cubic-bezier(0.16, 1, 0.3, 1) both,
+               badgeFloat 3s ease-in-out 1.7s infinite;
 }
 
 body.loaded .hero__exp-badge {
@@ -405,17 +403,57 @@ body {
     pointer-events: none;
 }
 
-/* Open to Learn Tag */
-.floating-tag--open {
+/* CTA Group (arrow + konten button) */
+.hero__cta-group {
+    position: absolute;
+    bottom: 38%;
+    right: 6%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    z-index: 10;
+    opacity: 0;
+}
+
+body.loaded .hero__cta-group {
+    animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+.doodle--arrow-inline {
+    width: 60px;
+    height: auto;
+    flex-shrink: 0;
+    transform: rotate(10deg) scaleY(1.2);
+}
+
+/* Open / Konten Tag — higher specificity to override .floating-tag base */
+.hero__cta-group .floating-tag--open {
+    position: static;
     background: transparent;
     border: 2px solid var(--accent-lime);
     color: var(--accent-lime);
-    top: 38%;
-    right: 4%;
     font-size: 0.8rem;
     line-height: 1.3;
     padding: 8px 16px;
-    animation-delay: 0.9s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 30px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: none;
+    animation: none;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hero__cta-group:hover .floating-tag--open {
+    background: var(--accent-lime);
+    color: #0a1628;
 }
 
 @keyframes floatIn {
@@ -433,11 +471,6 @@ body {
 .floating-tag--guru {
     animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both,
                gentleFloat 4s ease-in-out 1.5s infinite;
-}
-
-.floating-tag--open {
-    animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both,
-               gentleFloat 5s ease-in-out 2s infinite;
 }
 
 @keyframes gentleFloat {
@@ -475,6 +508,7 @@ body {
     font-size: 0.85rem;
     color: var(--white-60);
     line-height: 1.6;
+    text-align: justify;
 }
 
 @keyframes slideUp {
@@ -512,6 +546,12 @@ body {
 @keyframes badgeFloat {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
+}
+
+@keyframes guruFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(4px) rotate(-1deg); }
 }
 
 .hero__role-icon {
@@ -666,7 +706,7 @@ body.dark .rolling-banner {
     border-bottom-color: rgba(195, 255, 90, 0.08);
 }
 /* ============================================================
-   VISI SECTION
+   VISI SECTION — Horizontal Accordion
    ============================================================ */
 .visi {
     background: var(--white);
@@ -674,205 +714,231 @@ body.dark .rolling-banner {
     transition: background var(--transition);
 }
 
-.visi__container {
+.visi__inner {
     max-width: 1100px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 48px;
-    align-items: start;
 }
 
-.visi__photo-col {
-    position: sticky;
-    top: 40px;
-}
-
-.visi__photo-frame {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    border: 3px solid var(--blue-primary);
-    position: relative;
-}
-
-.visi__photo-frame::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(26, 92, 255, 0.15) 100%);
-    pointer-events: none;
-}
-
-.visi__photo {
-    width: 100%;
-    height: auto;
-    display: block;
+.visi__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    text-align: center;
+    transition: color var(--transition);
 }
 
 .visi__heading {
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
-    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
     color: var(--dark);
-    margin-bottom: 24px;
-    padding-left: 18px;
-    border-left: 5px solid var(--blue-primary);
-    line-height: 1.2;
+    line-height: 1.15;
+    margin-bottom: 48px;
+    text-align: center;
     transition: color var(--transition);
 }
 
-/* --- Visi Cards (Accordion) --- */
-.visi-card {
-    background: var(--white);
-    border-radius: var(--radius-md);
-    margin-bottom: 14px;
-    overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--gray-100);
-    transition: var(--transition);
+.visi__heading em {
+    font-style: normal;
+    color: var(--blue-primary);
+    transition: color var(--transition);
 }
 
-.visi-card:hover {
-    box-shadow: 0 6px 24px rgba(26, 92, 255, 0.1);
-    border-color: rgba(26, 92, 255, 0.2);
-}
-
-.visi-card__header {
-    width: 100%;
+/* --- Accordion Container --- */
+.visi__accordion {
     display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 18px 22px;
-    background: none;
-    border: none;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 15px;
+    min-height: 340px;
+    width: 100%;
+}
+
+/* --- Card Base --- */
+.visi-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
     cursor: pointer;
-    font-family: var(--font);
-    text-align: left;
-    transition: var(--transition);
+    flex: 1;
+    overflow: hidden; /* Penting: agar teks tidak meluber ke luar card saat sedang bergerak */
+    transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)!important;
 }
 
-.visi-card__header:hover {
-    background: var(--gray-50);
+/* First child active when nothing hovered */
+.visi__accordion:not(:hover) .visi-card:first-child {
+    flex: 4;
+    cursor: default;
 }
 
-.visi-card__number {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: var(--white);
-    background: var(--blue-primary);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+/* Hovered card expands */
+.visi-card:hover {
+    flex: 4;
+    cursor: default;
+}
+
+/* --- Tab (collapsed rotated title) --- */
+.visi-card__tab {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 1;
+    transform-origin: center;
+    /*transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);*/
+    transition: opacity 0.3s ease 0.3s;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Hide tab when expanded */
+.visi-card:hover .visi-card__tab,
+.visi__accordion:not(:hover) .visi-card:first-child .visi-card__tab {
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+/* --- Body (full content) --- */
+.visi-card__body {
+    position: absolute;
+    inset: 0;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(15px);
+    /*transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);*/
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+    
+    /* OPSIONAL TAPI DISARANKAN: Beri sedikit delay agar teks muncul setelah kartu mulai melebar */
+    transition-delay: 0.1s;
+    z-index: 2;
+}
+
+/* Show body when expanded */
+.visi-card:hover .visi-card__body,
+.visi__accordion:not(:hover) .visi-card:first-child .visi-card__body {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s ease 0.3s, transform 0.4s ease 0.3s;
+}
+
+.visi-card__number {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 12px;
+    display: block;
+    font-family: 'Space Grotesk', monospace, sans-serif;
 }
 
 .visi-card__title {
-    flex: 1;
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 14px;
+}
+
+.visi-card__desc {
     font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--dark);
-    transition: color var(--transition);
+    line-height: 1.75;
+    margin-bottom: 6px;
+    text-align: justify;
 }
 
-.visi-card__arrow {
-    font-size: 1.1rem;
-    color: var(--gray-500);
-    transition: transform 0.3s ease;
-}
-
-.visi-card.open .visi-card__arrow {
-    transform: rotate(180deg);
-}
-
-.visi-card__body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s ease;
-    padding: 0 22px;
-}
-
-.visi-card.open .visi-card__body {
-    max-height: 600px;
-    padding: 0 22px 22px;
-}
-
-.visi-card__body p {
-    font-size: 0.92rem;
-    line-height: 1.8;
-    color: var(--gray-500);
-    margin-bottom: 12px;
-}
-
-.visi-card__body p:last-child {
+.visi-card__desc:last-child {
     margin-bottom: 0;
 }
 
-.visi-card.open .visi-card__number {
-    background: var(--accent-lime);
-    color: #1a3a00;
+/* ===== BLUE ===== */
+.visi-card--blue {
+    background: linear-gradient(145deg, #1a5cff, #3b7aff);
 }
+
+.visi-card--blue .visi-card__tab { color: rgba(255,255,255,0.9); }
+.visi-card--blue .visi-card__icon { background: rgba(255,255,255,0.2); }
+.visi-card--blue .visi-card__title { color: #fff; }
+.visi-card--blue .visi-card__desc { color: rgba(255,255,255,0.8); }
+
+/* ===== LIME ===== */
+.visi-card--lime {
+    background: linear-gradient(145deg, #7abf18, #a0e030);
+}
+
+.visi-card--lime .visi-card__tab { color: #1a3a00; }
+.visi-card--lime .visi-card__icon { background: rgba(255,255,255,0.25); }
+.visi-card--lime .visi-card__title { color: #1a3a00; }
+.visi-card--lime .visi-card__desc { color: rgba(26,58,0,0.75); }
+
+/* ===== PURPLE ===== */
+.visi-card--purple {
+    background: linear-gradient(145deg, #9b6dff, #b794ff);
+}
+
+.visi-card--purple .visi-card__tab { color: rgba(255,255,255,0.9); }
+.visi-card--purple .visi-card__icon { background: rgba(255,255,255,0.2); }
+.visi-card--purple .visi-card__title { color: #fff; }
+.visi-card--purple .visi-card__desc { color: rgba(255,255,255,0.8); }
 
 /* --- Visi Dark Mode --- */
 body.dark .visi {
     background: #0a1320;
 }
 
+body.dark .visi__label {
+    color: var(--accent-lime);
+}
+
 body.dark .visi__heading {
     color: var(--gray-100);
-    border-left-color: var(--accent-lime);
 }
 
-body.dark .visi__photo-frame {
-    border-color: var(--accent-lime);
-}
-
-body.dark .visi-card {
-    background: #111c2e;
-    border-color: rgba(255, 255, 255, 0.06);
-}
-
-body.dark .visi-card:hover {
-    border-color: rgba(195, 255, 90, 0.15);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-}
-
-body.dark .visi-card__header:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-body.dark .visi-card__title {
-    color: var(--gray-300);
-}
-
-body.dark .visi-card__arrow {
-    color: var(--gray-500);
-}
-
-body.dark .visi-card__body p {
-    color: rgba(255, 255, 255, 0.55);
+body.dark .visi__heading em {
+    color: var(--accent-lime);
 }
 
 /* --- Visi Responsive --- */
 @media (max-width: 768px) {
     .visi {
-        padding: 48px 24px;
+        padding: 48px 20px;
     }
 
-    .visi__container {
-        grid-template-columns: 1fr;
-        gap: 32px;
+    .visi__accordion {
+        flex-direction: column;
+        height: auto;
     }
 
-    .visi__photo-col {
-        position: relative;
-        top: auto;
-        max-width: 320px;
-        margin: 0 auto;
+    .visi-card {
+        width: 100% !important;
+        height: 60px;
+        flex-shrink: 0;
+        transition: height 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .visi-card.is-active {
+        height: 280px;
+    }
+
+    .visi-card__tab {
+        writing-mode: horizontal-tb;
+        transform: none;
     }
 }
+
 
 /* ============================================================
    TABLE OF CONTENTS
@@ -1168,6 +1234,91 @@ main {
 }
 
 /* ============================================================
+   PENUTUP SECTION
+   ============================================================ */
+.penutup {
+    background: var(--white);
+    padding: 80px 24px;
+    transition: background var(--transition);
+}
+
+.penutup__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.penutup__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    text-align: left;
+    transition: color var(--transition);
+}
+
+.penutup__heading {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 40px;
+    text-align: left;
+    transition: color var(--transition);
+}
+
+.penutup__heading em {
+    font-style: normal;
+    color: var(--blue-primary);
+    transition: color var(--transition);
+}
+
+.penutup__content {
+    width: 100%;
+}
+
+.penutup__content p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--gray-600);
+    text-align: justify;
+    margin-bottom: 16px;
+    transition: color var(--transition);
+}
+
+.penutup__content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Penutup Dark Mode */
+body.dark .penutup {
+    background: #0a1320;
+}
+
+body.dark .penutup__label {
+    color: var(--accent-lime);
+}
+
+body.dark .penutup__heading {
+    color: var(--gray-100);
+}
+
+body.dark .penutup__heading em {
+    color: var(--accent-lime);
+}
+
+body.dark .penutup__content p {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 768px) {
+    .penutup {
+        padding: 48px 20px;
+    }
+}
+
+/* ============================================================
    DARK MODE TOGGLE BUTTON
    ============================================================ */
 .theme-toggle {
@@ -1320,7 +1471,7 @@ body.dark .floating-tag--guru {
     box-shadow: 0 8px 24px rgba(195, 255, 90, 0.2);
 }
 
-body.dark .floating-tag--open {
+body.dark .hero__cta-group .floating-tag--open {
     border-color: rgba(195, 255, 90, 0.5);
     color: rgba(195, 255, 90, 0.7);
 }
@@ -1416,15 +1567,12 @@ body.dark .footer {
         padding: 8px 16px;
     }
 
-    .floating-tag--open {
-        top: auto;
-        bottom: 48%;
+    .hero__cta-group {
+        bottom: 42%;
         right: 2%;
-        font-size: 0.7rem;
     }
 
     .doodle--star { left: 4%; }
-    .doodle--arrow { display: none; }
     .doodle--circle { left: 6%; }
 
     .toc__item {

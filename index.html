@@ -37,15 +37,14 @@
 
     <!-- ============ HERO SECTION ============ -->
     <header class="hero" id="hero">
-        <!-- Close & Menu Buttons (decorative) -->
-        <button class="hero-btn hero-btn--close" aria-label="Close">&#10005;</button>
+        <!-- Menu Button (decorative) -->
         <button class="hero-btn hero-btn--menu" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
 
         <!-- Top subtitle -->
-        <p class="hero__subtitle">Seminar Pendidikan Profesi Guru </p>
-        <h1 class="hero__title">E-PORTOFOLIO</h1>
+        <p class="hero__subtitle">Dokumentasi E-portofolio</p>
+        <h1 class="hero__title">Seminar PPG</h1>
 
         <!-- Photo container – the photo overlaps the title -->
         <div class="hero__photo-wrapper">
@@ -58,10 +57,16 @@
             Mas Guru
         </div>
 
-        <div class="floating-tag floating-tag--open">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-            open to<br>learn
-        </div>
+        <a href="#toc" class="hero__cta-group">
+            <svg class="doodle doodle--arrow-inline" viewBox="0 0 60 30" fill="none" stroke="#c3ff5a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 25 Q30 0 55 15"/>
+                <path d="M48 10 l7 5-8 4"/>
+            </svg>
+            <span class="floating-tag floating-tag--open">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+                Konten
+            </span>
+        </a>
 
         <!-- Profile Card (glassmorphism) -->
         <div class="hero__profile-card">
@@ -93,10 +98,6 @@
         <!-- Doodle SVGs for decoration -->
         <svg class="doodle doodle--star" viewBox="0 0 40 40" fill="none" stroke="#c3ff5a" stroke-width="2">
             <path d="M20 2 l4 12 12 0-10 8 4 12-10-8-10 8 4-12L4 14l12 0z"/>
-        </svg>
-        <svg class="doodle doodle--arrow" viewBox="0 0 60 30" fill="none" stroke="#c3ff5a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 25 Q30 0 55 15"/>
-            <path d="M48 10 l7 5-8 4"/>
         </svg>
         <svg class="doodle doodle--circle" viewBox="0 0 30 30" fill="none" stroke="#c3ff5a" stroke-width="2">
             <circle cx="15" cy="15" r="12"/>
@@ -134,55 +135,41 @@
     </div>
     <!-- ============ VISI SECTION ============ -->
     <section class="visi" id="visi">
-        <div class="visi__container">
-            <!-- Photo -->
-            <div class="visi__photo-col reveal reveal--left">
-                <div class="visi__photo-frame">
-                    <img src="img/nuris.png" alt="Foto Nur Isnanto Nugroho" class="visi__photo">
-                </div>
-            </div>
+        <div class="visi__inner">
+            <p class="visi__label reveal">[01] Visi & Misi</p>
+            <h2 class="visi__heading reveal" data-delay="100">Visi Saya sebagai<br><em>Calon Pendidik</em></h2>
 
-            <!-- Vision Cards -->
-            <div class="visi__content-col">
-                <h2 class="visi__heading reveal" data-delay="100">Visi & Misi Saya</h2>
-
-                <!-- Card 1 -->
-                <div class="visi-card reveal" id="visiCard1" data-delay="200">
-                    <button class="visi-card__header" onclick="toggleVisi('visiCard1')">
-                        <span class="visi-card__number">01</span>
-                        <span class="visi-card__title">Visi Pribadi untuk Pendidikan di Indonesia</span>
-                        <span class="visi-card__arrow">▾</span>
-                    </button>
+            <div class="visi__accordion">
+                <!-- Card 1: Blue -->
+                <div class="visi-card visi-card--blue reveal" data-delay="200">
+                    <span class="visi-card__tab">Visi Pendidikan</span>
                     <div class="visi-card__body">
-                        <p>Visi pribadi saya untuk pendidikan di Indonesia adalah mewujudkan pendidikan yang mampu membentuk manusia Indonesia yang berkarakter, berintegritas, serta memiliki kemampuan berpikir kritis dalam memahami, mengolah, dan menggunakan informasi secara bertanggung jawab berdasarkan nilai-nilai Pancasila.</p>
-                        <p>Melalui pembelajaran yang bermakna, kontekstual, dan membangun budaya belajar sepanjang hayat, saya berharap setiap peserta didik mampu menghubungkan pengetahuan dengan kehidupan nyata sehingga menjadi pribadi yang adaptif, bijaksana, dan berkontribusi bagi kemajuan bangsa.</p>
+                        <span class="visi-card__number">[01]</span>
+                        <h3 class="visi-card__title">Visi Pribadi untuk Pendidikan di Indonesia</h3>
+                        <p class="visi-card__desc">Mewujudkan pendidikan yang mampu membentuk manusia Indonesia yang berkarakter, berintegritas, serta memiliki kemampuan berpikir kritis berdasarkan nilai-nilai Pancasila.</p>
+                        <p class="visi-card__desc">Melalui pembelajaran yang bermakna, kontekstual, dan membangun budaya belajar sepanjang hayat.</p>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="visi-card reveal" id="visiCard2" data-delay="350">
-                    <button class="visi-card__header" onclick="toggleVisi('visiCard2')">
-                        <span class="visi-card__number">02</span>
-                        <span class="visi-card__title">Visi Pribadi Sebagai Calon Guru</span>
-                        <span class="visi-card__arrow">▾</span>
-                    </button>
+                <!-- Card 2: Lime -->
+                <div class="visi-card visi-card--lime reveal" data-delay="350">
+                    <span class="visi-card__tab">Visi Calon Guru</span>
                     <div class="visi-card__body">
-                        <p>Visi saya sebagai calon guru adalah menjadi guru Informatika yang membangun budaya belajar dan budaya bertanya melalui pembelajaran yang bermakna, kontekstual, dan berpusat pada peserta didik.</p>
-                        <p>Saya ingin menghadirkan lingkungan belajar yang mendorong peserta didik berani bertanya, aktif mencari informasi dari berbagai sumber yang valid, menghubungkan materi dengan kehidupan nyata, serta menggunakan pengetahuan dan teknologi secara bertanggung jawab untuk menghasilkan solusi yang bermanfaat bagi masyarakat.</p>
+                        <span class="visi-card__number">[02]</span>
+                        <h3 class="visi-card__title">Visi Pribadi Sebagai Calon Guru</h3>
+                        <p class="visi-card__desc">Menjadi guru Informatika yang membangun budaya belajar dan budaya bertanya melalui pembelajaran yang bermakna, kontekstual, dan berpusat pada peserta didik.</p>
+                        <p class="visi-card__desc">Menghadirkan lingkungan belajar yang mendorong peserta didik berani bertanya dan aktif mencari informasi dari berbagai sumber yang valid.</p>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="visi-card reveal" id="visiCard3" data-delay="500">
-                    <button class="visi-card__header" onclick="toggleVisi('visiCard3')">
-                        <span class="visi-card__number">03</span>
-                        <span class="visi-card__title">Hal yang Dilakukan untuk Mencapai Visi</span>
-                        <span class="visi-card__arrow">▾</span>
-                    </button>
+                <!-- Card 3: Purple -->
+                <div class="visi-card visi-card--purple reveal" data-delay="500">
+                    <span class="visi-card__tab">Langkah Aksi</span>
                     <div class="visi-card__body">
-                        <p>Untuk mewujudkan visi tersebut, saya akan membangun budaya belajar yang menempatkan peserta didik sebagai pembelajar aktif melalui pembelajaran yang bermakna, kontekstual, dan berpusat pada peserta didik. Saya akan membangun budaya bertanya dengan membiasakan setiap peserta didik menyiapkan minimal satu pertanyaan pada setiap pembelajaran sebagai bentuk refleksi terhadap pemahamannya sekaligus langkah awal menumbuhkan rasa ingin tahu.</p>
-                        <p>Selanjutnya, saya akan memfasilitasi peserta didik untuk mencari informasi dari berbagai sumber yang valid, berdiskusi, serta menghubungkan materi pembelajaran dengan permasalahan nyata di kehidupan sehari-hari sehingga pengetahuan yang diperoleh tidak berhenti pada pemahaman konsep, tetapi menjadi bekal dalam mengambil keputusan secara kritis dan bertanggung jawab.</p>
-                        <p>Selain itu, saya akan terus mengembangkan kompetensi diri melalui refleksi, kolaborasi, dan pembelajaran berkelanjutan agar mampu menghadirkan pembelajaran yang relevan dengan perkembangan ilmu pengetahuan, teknologi, serta kebutuhan peserta didik.</p>
+                        <span class="visi-card__number">[03]</span>
+                        <h3 class="visi-card__title">Hal yang Dilakukan untuk Mencapai Visi</h3>
+                        <p class="visi-card__desc">Membangun budaya belajar yang menempatkan peserta didik sebagai pembelajar aktif dan membiasakan pertanyaan di setiap pembelajaran.</p>
+                        <p class="visi-card__desc">Memfasilitasi diskusi, menghubungkan materi dengan kehidupan nyata, serta terus mengembangkan kompetensi melalui refleksi dan kolaborasi.</p>
                     </div>
                 </div>
             </div>
@@ -191,9 +178,9 @@
 
     <!-- ============ TABLE OF CONTENTS ============ -->
     <nav class="toc" id="toc">
-        <p class="toc__label reveal">[01] DAFTAR ISI</p>
 
         <div class="toc__card reveal reveal--scale" data-delay="150">
+            <p class="toc__label">[02] DAFTAR ISI</p>
             <h2 class="toc__title">Daftar Isi<br><em>Portofolio</em></h2>
 
             <div class="toc__list">
@@ -241,13 +228,17 @@
         </div>
     </nav>
 
-    <!-- ============ MAIN CONTENT ============ -->
-    <main>
-        <section id="penutup" class="content-section reveal">
-            <h2>Penutup</h2>
-            <p>Kesimpulan dari seluruh proses yang telah dijalani selama masa PPG. Harapan ke depan sebagai pendidik profesional di bidang Informatika yang mampu beradaptasi dengan teknologi dan kebutuhan peserta didik.</p>
-        </section>
-    </main>
+    <!-- ============ PENUTUP SECTION ============ -->
+    <section class="penutup" id="penutup">
+        <div class="penutup__inner">
+            <p class="penutup__label reveal">[03] Penutup</p>
+            <h2 class="penutup__heading reveal" data-delay="100">Refleksi &<br><em>Harapan</em></h2>
+            <div class="penutup__content reveal" data-delay="200">
+                <p>Seluruh proses yang telah dijalani selama masa PPG memberikan pengalaman berharga yang membentuk pemahaman saya tentang menjadi pendidik profesional. Setiap tantangan, kolaborasi, dan refleksi menjadi fondasi dalam membangun kompetensi pedagogik dan kepribadian sebagai calon guru.</p>
+                <p>Ke depan, saya berharap dapat terus mengembangkan diri sebagai pendidik yang mampu beradaptasi dengan perkembangan teknologi, memahami kebutuhan peserta didik, serta berkontribusi nyata dalam mewujudkan pendidikan Indonesia yang berkualitas dan berkarakter.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- ============ DARK MODE TOGGLE ============ -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
