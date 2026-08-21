@@ -876,7 +876,8 @@ body.dark .rolling-banner {
 
 /* ===== LIME ===== */
 .visi-card--lime {
-    background: linear-gradient(145deg, #7abf18, #a0e030);
+    /* Ganti kode linear-gradient lama dengan variabel ijo stabilo ini */
+    background: var(--accent-lime); 
 }
 
 .visi-card--lime .visi-card__tab { color: #1a3a00; }
@@ -1511,159 +1512,153 @@ body.dark .footer {
 }
 
 /* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 768px) {
-    .hero {
-        padding: 24px 16px 40px;
-        min-height: 90vh;
-    }
-
-    .hero__subtitle {
-        margin-top: 60px;
-        font-size: 0.9rem;
-    }
-
-    .hero__title {
-        font-size: clamp(4rem, 18vw, 7rem);
-        letter-spacing: 2px;
-    }
-
-    .hero__photo-wrapper {
-        max-width: 100%;
-        margin-top: 10px;
-    }
-
-    .hero__profile-card {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        max-width: 100%;
-        margin-top: 16px;
-    }
-
-    .hero__role-badge {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        margin-top: 12px;
-        justify-content: center;
-    }
-
-    .hero__exp-badge {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        margin: 16px auto 0;
-        width: 140px;
-        height: 140px;
-    }
-
-    .floating-tag--guru {
-        top: 30%;
-        left: 5%;
-        right: auto;
-        font-size: 0.9rem;
-        padding: 8px 16px;
-    }
-
-    .hero__cta-group {
-        bottom: 42%;
-        right: 2%;
-    }
-
-    .doodle--star { left: 4%; }
-    .doodle--circle { left: 6%; }
-
-    .toc__item {
-        padding: 20px 0;
-    }
-
-    .content-section {
-        padding: 40px 0;
-    }
-}
-
-/* ============================================================
    RESPONSIVE (MOBILE ADJUSTMENTS)
    ============================================================ */
 @media (max-width: 768px) {
     .hero {
-        padding: 24px 16px 40px;
-        min-height: auto;
+        padding: 80px 16px 40px; /* Padding atas ditambah agar tidak nabrak tombol menu */
+        min-height: 100vh;
     }
 
     .hero__subtitle {
-        margin-top: 20px;
+        margin-top: 10px;
         font-size: 0.85rem;
+        position: relative;
+        z-index: 2;
     }
 
-    /* Judul Seminar PPG dipindah ke atas foto di versi mobile */
-    .hero__title {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        font-size: clamp(3.2rem, 15vw, 5rem);
+    /* MATIKAN ANIMASI DESKTOP & RESET POSISI JUDUL */
+    body.loaded .hero__title {
+        /* Ganti ke animasi scale biasa agar tidak ada efek translate/geser */
+        animation: heroFadeScale 0.8s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    }
+
+.hero__title {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        font-size: clamp(3rem, 15vw, 4.5rem);
         letter-spacing: 2px;
-        margin-bottom: 10px;
+        /* Ubah margin-bottom menjadi 0 atau minus agar lebih rapat */
+        margin-bottom: 0px; 
+        width: 100%;
+        text-align: center;
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
     }
 
-    .hero__photo-wrapper {
-        max-width: 300px;
-        margin: 10px auto 20px;
+.hero__photo-wrapper {
+        position: relative !important;
+        
+        /* UBAH BAGIAN INI: Perbesar angkanya (misal dari 280px menjadi 320px atau 350px) */
+        max-width: 340px; 
+        
+        margin: -10px auto 10px; 
     }
 
-    /* Badge Mas Guru & Guru Informatika di kanan-kiri foto mobile */
+/* 1. BADGE MAS GURU (Kiri - Turun ke area bahu kiri) */
     .floating-tag--guru {
-        top: 25%;
-        left: -10px;
+        position: absolute;
+        top: 29%; /* Persentase diperbesar agar posisinya turun jauh ke bawah judul */
+        left: 55px;
+        right: auto;
+        font-size: 0.65rem; 
+        padding: 4px 10px; 
+        z-index: 6;
+    }
+    
+    .floating-tag--guru .floating-tag__icon {
         font-size: 0.8rem;
-        padding: 6px 12px;
     }
 
+    /* 2. BADGE GURU INFORMATIKA (Kanan - Turun ke area bahu kanan) */
     .hero__role-badge {
         position: absolute;
-        top: 35%;
-        right: -10px;
+        top: 48%; /* Sedikit lebih bawah dari badge kiri agar seimbang */
+        right: 55px;
         bottom: auto;
         left: auto;
         margin: 0;
-        font-size: 0.8rem;
-        padding: 6px 12px;
+        font-size: 0.65rem; 
+        padding: 4px 10px; 
+        z-index: 6;
     }
 
-    /* Profile card & Exp badge ditumpuk rapi di bawah foto tanpa tabrakan */
-    .hero__profile-card {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        max-width: 100%;
-        margin-top: 10px;
-        text-align: left;
-        padding: 18px 20px;
+    /* Menyembunyikan ornamen panah di versi mobile */
+    .doodle--arrow-inline,
+    .doodle--arrow {
+        display: none !important;
+    }
+
+    .hero {
+        padding: 80px 16px 40px;
+        min-height: 100vh;
+        /* Tambahkan baris ini agar elemen bisa menembus ke bawah */
+        overflow: visible !important; 
     }
 
     .hero__exp-badge {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        margin: 16px auto 0;
-        width: 120px;
-        height: 120px;
+        position: absolute !important;
+        
+        /* Pakai angka minus besar untuk memaksanya turun menimpa area putih */
+        bottom: -40px !important; 
+        
+        left: auto !important;
+        right: -28px !important;
+        transform: none !important;
+        margin: 0 !important;
+        width: 110px !important;
+        height: 110px !important;
+        
+        /* Z-index sangat tinggi agar posisinya di lapisan paling atas */
+        z-index: 99 !important; 
+    }
+    
+    .hero__role-badge .hero__role-icon {
+        font-size: 0.8rem;
+    }
+
+ /* Beri ruang kosong di bawah kotak profil agar tidak tertutup lingkaran */
+.hero__profile-card {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        max-width: 100% !important;
+        
+        /* UBAH BAGIAN INI */
+        margin-top: -10px !important; /* Gunakan angka minus agar kartunya naik mendekati/menimpa foto */
+        
+        margin-bottom: 70px !important; 
+        text-align: left !important;
+        padding: 20px !important;
+    }
+
+    /* Paksa Lingkaran PPG ke Bawah Tengah (Di atas banner) */
+/* Paksa Lingkaran PPG ke Kanan Bawah (Menimpa banner) */
+    .hero__exp-badge {
+        position: absolute !important;
+        /* Turunkan posisinya agar center dengan banner scroll hitam */
+        bottom: -15px !important; 
+        left: auto !important;
+        /* Geser ke kanan hingga keluar batas layar (terpotong 25%) */
+        right: -28px !important; 
+        transform: none !important; /* Wajib: matikan efek rata tengah dari kode sebelumnya */
+        margin: 0 !important;
+        width: 110px !important;
+        height: 110px !important;
+        z-index: 20 !important; 
     }
 
     .hero__exp-number {
-        font-size: 1.6rem;
+        font-size: 1.4rem !important;
     }
 
     .hero__exp-circle-text text {
-        font-size: 11px;
-        letter-spacing: 2.5px;
+        font-size: 10.5px !important;
+        letter-spacing: 2px !important;
     }
 
-    /* Visi Section di Mobile: Berubah jadi vertikal dan langsung terbuka full */
+    /* ============ VISI SECTION (LANGSUNG KARTU FULL) ============ */
     .visi {
         padding: 48px 20px;
     }
@@ -1679,15 +1674,13 @@ body.dark .footer {
         flex: unset !important;
         height: auto !important;
         min-height: unset !important;
-        padding: 28px 22px;
+        padding: 24px 20px;
     }
 
-    /* Sembunyikan elemen tab kecil khas desktop */
     .visi-card__tab {
         display: none !important;
     }
 
-    /* Pastikan body card selalu tampil penuh di mobile */
     .visi-card__body {
         position: relative !important;
         inset: auto !important;
@@ -1696,8 +1689,9 @@ body.dark .footer {
         padding: 0 !important;
         display: flex !important;
         flex-direction: column !important;
+        transition-delay: 0s !important;
     }
-
+    
     .toc__item {
         padding: 20px 0;
     }
