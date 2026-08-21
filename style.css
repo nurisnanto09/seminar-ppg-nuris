@@ -1584,25 +1584,72 @@ body.dark .footer {
     }
 }
 
-@media (max-width: 480px) {
+/* ============================================================
+   RESPONSIVE (MOBILE ADJUSTMENTS)
+   ============================================================ */
+@media (max-width: 768px) {
+    .hero {
+        padding: 24px 16px 40px;
+        min-height: auto;
+    }
+
+    .hero__subtitle {
+        margin-top: 20px;
+        font-size: 0.85rem;
+    }
+
+    /* Judul Seminar PPG dipindah ke atas foto di versi mobile */
     .hero__title {
-        font-size: 3.8rem;
-        letter-spacing: 1px;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        font-size: clamp(3.2rem, 15vw, 5rem);
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
     }
 
+    .hero__photo-wrapper {
+        max-width: 300px;
+        margin: 10px auto 20px;
+    }
+
+    /* Badge Mas Guru & Guru Informatika di kanan-kiri foto mobile */
     .floating-tag--guru {
-        top: 12%;
-        left: 4%;
-        right: auto;
+        top: 25%;
+        left: -10px;
         font-size: 0.8rem;
-        padding: 6px 14px;
+        padding: 6px 12px;
     }
 
+    .hero__role-badge {
+        position: absolute;
+        top: 35%;
+        right: -10px;
+        bottom: auto;
+        left: auto;
+        margin: 0;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    /* Profile card & Exp badge ditumpuk rapi di bawah foto tanpa tabrakan */
     .hero__profile-card {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        max-width: 100%;
+        margin-top: 10px;
+        text-align: left;
         padding: 18px 20px;
     }
 
     .hero__exp-badge {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 16px auto 0;
         width: 120px;
         height: 120px;
     }
@@ -1614,5 +1661,48 @@ body.dark .footer {
     .hero__exp-circle-text text {
         font-size: 11px;
         letter-spacing: 2.5px;
+    }
+
+    /* Visi Section di Mobile: Berubah jadi vertikal dan langsung terbuka full */
+    .visi {
+        padding: 48px 20px;
+    }
+
+    .visi__accordion {
+        flex-direction: column;
+        height: auto;
+        gap: 16px;
+    }
+
+    .visi-card {
+        width: 100% !important;
+        flex: unset !important;
+        height: auto !important;
+        min-height: unset !important;
+        padding: 28px 22px;
+    }
+
+    /* Sembunyikan elemen tab kecil khas desktop */
+    .visi-card__tab {
+        display: none !important;
+    }
+
+    /* Pastikan body card selalu tampil penuh di mobile */
+    .visi-card__body {
+        position: relative !important;
+        inset: auto !important;
+        opacity: 1 !important;
+        transform: none !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .toc__item {
+        padding: 20px 0;
+    }
+
+    .content-section {
+        padding: 40px 0;
     }
 }
