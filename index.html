@@ -13,6 +13,30 @@
 </head>
 <body>
 
+    <!-- ============ BACKDROP & LEFT SIDEBAR ============ -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    
+    <nav class="sidebar-nav" id="sidebarNav">
+        <!-- Tombol Silang -->
+        <button class="sidebar-nav__close" id="btnCloseMenu" aria-label="Tutup Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        
+        <div class="sidebar-nav__header">
+            <h3>Navigasi</h3>
+        </div>
+        
+        <!-- Daftar Menu -->
+        <ul class="sidebar-nav__list">
+            <li><a href="#visi" class="sidebar-nav__link">01. Visi & Misi</a></li>
+            <li><a href="#toc" class="sidebar-nav__link">02. Daftar Isi</a></li>
+            <li><a href="#penutup" class="sidebar-nav__link">03. Refleksi & Harapan</a></li>
+        </ul>
+    </nav>
+
     <!-- ============ LOADING SCREEN ============ -->
     <div class="loader" id="loader">
         <div class="loader__ring-wrap"> 
@@ -58,16 +82,20 @@
             Mas Guru
         </div>
 
-        <a href="#toc" class="hero__cta-group">
+        <div class="hero__cta-group">
+            <!-- Panah ada di luar tag <a> -->
             <svg class="doodle doodle--arrow-inline" viewBox="0 0 60 30" fill="none" stroke="#c3ff5a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 25 Q30 0 55 15"/>
                 <path d="M48 10 l7 5-8 4"/>
             </svg>
-            <span class="floating-tag floating-tag--open">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-                Konten
-            </span>
-        </a>
+            
+            <!-- Tombol Daftar Isi -->
+<!-- Tombol dengan ID khusus agar tidak bentrok -->
+    <a href="#" id="btnLuncurTOC" class="floating-tag floating-tag--open">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Daftar Isi
+    </a>
+        </div>
 
         <!-- Profile Card (glassmorphism) -->
         <div class="hero__profile-card">
@@ -262,52 +290,68 @@
 
     <!-- ============ SCRIPTS ============ -->
     <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
         document.addEventListener("DOMContentLoaded", function() {
-            // Smooth scroll for TOC links
-            const tocLinks = document.querySelectorAll('.toc__link');
-            tocLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 20,
-                            behavior: 'smooth'
-                        });
+            
+            // =======================================================
+            // JURUS ULTIMATE: CUSTOM SMOOTH SCROLL & GLOW
+            // =======================================================
+            const btnLuncur = document.getElementById('btnLuncurTOC');
+            const targetTOC = document.getElementById('toc');
+
+            if (btnLuncur && targetTOC) {
+                btnLuncur.addEventListener('click', function(e) {
+                    e.preventDefault(); // Matikan klik bawaan HTML
+
+                    // Hitung jarak
+                    const targetPosition = targetTOC.getBoundingClientRect().top + window.pageYOffset - 20;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1000; // Kecepatan meluncur: 1000ms (1 detik). Bisa diperbesar kalau mau lebih lambat.
+                    let start = null;
+
+                    // Fungsi penggerak layar frame-by-frame
+                    function step(timestamp) {
+                        if (!start) start = timestamp;
+                        const progress = timestamp - start;
+                        
+                        // Rumus pergerakan halus (Easing in-out)
+                        const easeInOutCubic = progress < duration / 2 
+                            ? 4 * Math.pow(progress / duration, 3) 
+                            : 1 - Math.pow(-2 * (progress / duration) + 2, 3) / 2;
+                        
+                        window.scrollTo(0, startPosition + distance * easeInOutCubic);
+                        
+                        if (progress < duration) {
+                            window.requestAnimationFrame(step); // Lanjut meluncur
+                        } else {
+                            // Layar sudah sampai tujuan, nyalakan GLOW!
+                            targetTOC.classList.remove('animasi-nyala');
+                            void targetTOC.offsetWidth; // Refresh trigger
+                            targetTOC.classList.add('animasi-nyala');
+                            
+                            setTimeout(() => {
+                                targetTOC.classList.remove('animasi-nyala');
+                            }, 1500);
+                        }
                     }
-                    tocLinks.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
+
+                    // Mulai animasi
+                    window.requestAnimationFrame(step);
                 });
-            });
+            }
 
-            // Floating tag subtle animation on scroll
-            const floatingTags = document.querySelectorAll('.floating-tag');
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                floatingTags.forEach((tag, i) => {
-                    const direction = i % 2 === 0 ? 1 : -1;
-                    tag.style.transform = `translateY(${Math.sin(scrollY * 0.01 + i) * 8 * direction}px)`;
-                });
-            });
-
-            // Entrance animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.content-section').forEach(section => {
-                observer.observe(section);
-            });
-
-            // Dark mode toggle
+            // =======================================================
+            // 3. DARK MODE TOGGLE (Bawaan Mas Nuris)
+            // =======================================================
             const themeToggle = document.getElementById('themeToggle');
             const toggleText = themeToggle.querySelector('.theme-toggle__text');
             const savedTheme = localStorage.getItem('theme');
+            
             if (savedTheme === 'dark') {
                 document.body.classList.add('dark');
                 themeToggle.classList.add('active');
@@ -321,36 +365,30 @@
                 toggleText.textContent = isDark ? 'DARK_MODE' : 'LIGHT_MODE';
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
             });
+
+            // =======================================================
+            // 4. ANIMASI MUNCUL SAAT DI-SCROLL (Bawaan Mas Nuris)
+            // =======================================================
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                        }, delay);
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                revealObserver.observe(el);
+            });
         });
 
-        // Visi accordion toggle
-        function toggleVisi(cardId) {
-            const card = document.getElementById(cardId);
-            const allCards = document.querySelectorAll('.visi-card');
-            allCards.forEach(c => {
-                if (c.id !== cardId) c.classList.remove('open');
-            });
-            card.classList.toggle('open');
-        }
-
-        // ========== SCROLL REVEAL ==========
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const delay = entry.target.dataset.delay || 0;
-                    setTimeout(() => {
-                        entry.target.classList.add('revealed');
-                    }, delay);
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            revealObserver.observe(el);
-        });
-
-        // ========== LOADING SCREEN ==========
+        // =======================================================
+        // 5. LOADING SCREEN & HAPUS LOADING SAAT SELESAI
+        // =======================================================
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             if (loader) {
@@ -363,6 +401,42 @@
                 }, 2500);
             }
         });
+
+        // =======================================================
+            // LEFT SIDEBAR MENU (HAMBURGER BUTTON)
+            // =======================================================
+            const btnMenu = document.querySelector('.hero-btn--menu');
+            const sidebarNav = document.getElementById('sidebarNav');
+            const btnCloseMenu = document.getElementById('btnCloseMenu');
+            const menuBackdrop = document.getElementById('menuBackdrop');
+            const menuLinks = document.querySelectorAll('.sidebar-nav__link');
+
+            if (btnMenu && sidebarNav && btnCloseMenu && menuBackdrop) {
+                // 1. Fungsi buka menu
+                btnMenu.addEventListener('click', () => {
+                    sidebarNav.classList.add('is-open');
+                    menuBackdrop.classList.add('is-active');
+                    document.body.style.overflow = 'hidden'; // Kunci scroll layar utama
+                });
+
+                // 2. Fungsi tutup menu (dijadikan function agar bisa dipakai berulang)
+                const closeMenu = () => {
+                    sidebarNav.classList.remove('is-open');
+                    menuBackdrop.classList.remove('is-active');
+                    document.body.style.overflow = ''; 
+                };
+
+                // 3. Tutup saat tombol X diklik
+                btnCloseMenu.addEventListener('click', closeMenu);
+
+                // 4. Tutup saat layar gelap (luar menu) diklik
+                menuBackdrop.addEventListener('click', closeMenu);
+
+                // 5. Tutup saat salah satu menu dipilih
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+            }
     </script>
 </body>
 </html>

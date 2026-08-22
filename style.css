@@ -196,7 +196,7 @@ body.loaded .hero-btn {
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
 }
 
 body {
@@ -204,7 +204,7 @@ body {
     background: var(--gray-50);
     color: var(--dark);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 /* ---------- HERO SECTION ---------- */
@@ -405,12 +405,13 @@ body {
 
 /* CTA Group (arrow + konten button) */
 .hero__cta-group {
-    position: absolute;
-    bottom: 38%;
+    position: absolute; 
+    bottom: 42%;
     right: 6%;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 5px !important; /* Jarak antara panah dan tombol */
     text-decoration: none;
     z-index: 10;
     opacity: 0;
@@ -424,10 +425,16 @@ body.loaded .hero__cta-group {
     width: 60px;
     height: auto;
     flex-shrink: 0;
+    
+    /* Gunakan margin negatif jika panah masih masuk ke dalam tombol */
+    margin-right: 15px !important; 
+    margin-top: -20px !important;
+    /* Reset posisi agar tidak melayang aneh */
+    position: relative !important; 
     transform: rotate(10deg) scaleY(1.2);
 }
 
-/* Open / Konten Tag — higher specificity to override .floating-tag base */
+/* Open / Daftar Isi Tag — higher specificity to override .floating-tag base */
 .hero__cta-group .floating-tag--open {
     position: static;
     background: transparent;
@@ -443,17 +450,21 @@ body.loaded .hero__cta-group {
     font-weight: 700;
     white-space: nowrap;
     box-shadow: none;
-    animation: none;
+    animation: none !important;
+    opacity: 1 !important;
+    text-decoration: none;
     top: auto;
     right: auto;
     left: auto;
     bottom: auto;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 }
 
-.hero__cta-group:hover .floating-tag--open {
+.hero__cta-group .floating-tag--open:hover {
     background: var(--accent-lime);
     color: #0a1628;
+    transform: translateY(-2px);
 }
 
 @keyframes floatIn {
@@ -715,7 +726,7 @@ body.dark .rolling-banner {
 }
 
 .visi__inner {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -752,7 +763,7 @@ body.dark .rolling-banner {
     flex-direction: row;
     align-items: stretch;
     gap: 15px;
-    min-height: 340px;
+    min-height: 380px;
     width: 100%;
 }
 
@@ -1313,6 +1324,59 @@ body.dark .penutup__content p {
     color: rgba(255, 255, 255, 0.65);
 }
 
+/* ============================================================
+   ANIMASI KLIK & TARGET DAFTAR ISI
+   ============================================================ */
+
+/* 1. Animasi saat tombol Daftar Isi diklik (Efek membal/ditekan) */
+/* Efek saat tombol ditekan */
+.hero__cta-group .floating-tag--open:active {
+    transform: translateY(4px) scale(0.95) !important;
+    background: var(--accent-lime-dark) !important;
+    transition: transform 0.1s ease, background 0.1s ease;
+}
+
+/* Efek nyala dipicu oleh JavaScript */
+.animasi-nyala .toc__card {
+    animation: targetGlow 1.2s ease-out;
+}
+
+@keyframes targetGlow {
+    0% { 
+        transform: translateY(20px) scale(0.98);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+    40% { 
+        transform: translateY(0) scale(1.02);
+        box-shadow: 0 0 40px rgba(195, 255, 90, 0.6); 
+    }
+    100% { 
+        transform: translateY(0) scale(1);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+}
+
+/* 2. Animasi saat layar selesai meluncur ke Daftar Isi (Glow & Bounce) */
+#toc:target .toc__card {
+    animation: targetGlow 1.2s ease-out;
+}
+
+@keyframes targetGlow {
+    0% { 
+        transform: translateY(20px) scale(0.98);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+    40% { 
+        transform: translateY(0) scale(1.02);
+        /* Warna ijo stabilo menyala di sekeliling kartu */
+        box-shadow: 0 0 40px rgba(195, 255, 90, 0.6); 
+    }
+    100% { 
+        transform: translateY(0) scale(1);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+}
+
 @media (max-width: 768px) {
     .penutup {
         padding: 48px 20px;
@@ -1699,4 +1763,137 @@ body.dark .footer {
     .content-section {
         padding: 40px 0;
     }
+}
+
+/* ============================================================
+   LEFT SIDEBAR NAVBAR & BACKDROP
+   ============================================================ */
+/* Layar gelap transparan di belakang menu */
+.menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 25, 41, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.menu-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Sidebar Navbar */
+/* Sidebar Navbar (Di Kanan) */
+.sidebar-nav {
+    position: fixed;
+    top: 0;
+    /* UBAH BAGIAN INI: Ganti left menjadi right */
+    right: 0; 
+    left: auto;
+    
+    width: 280px; 
+    height: 100vh;
+    height: 100dvh;
+    background: #0a1320; 
+    
+    /* UBAH BAGIAN INI: Garis pembatas dipindah ke kiri */
+    border-left: 1px solid rgba(195, 255, 90, 0.2); 
+    border-right: none;
+    
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3); /* Bayangan memantul ke kiri */
+    z-index: 9999;
+    
+    /* UBAH BAGIAN INI: Bersembunyi di luar layar KANAN (angka positif) */
+    transform: translateX(100%); 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    display: flex;
+    flex-direction: column;
+    padding: 80px 24px 24px;
+}
+
+/* Class saat sidebar muncul */
+.sidebar-nav.is-open {
+    transform: translateX(0);
+}
+
+.sidebar-nav__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--white);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.sidebar-nav__close:hover {
+    background: var(--accent-lime);
+    color: #1a3a00;
+    transform: rotate(90deg);
+}
+
+.sidebar-nav__header h3 {
+    color: var(--accent-lime);
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar-nav__link {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.05rem;
+    font-weight: 600;
+    display: block;
+    padding: 14px 18px;
+    border-radius: 12px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.sidebar-nav__link:hover {
+    background: rgba(195, 255, 90, 0.08);
+    border-color: rgba(195, 255, 90, 0.2);
+    color: var(--accent-lime);
+    transform: translateX(8px); /* Efek teks bergeser sedikit ke kanan saat di-hover */
+}
+
+/* ============================================================
+   STICKY MENU BUTTON
+   ============================================================ */
+.hero-btn--menu {
+    position: fixed !important; /* Kunci posisi tombol ke layar */
+    top: 24px !important;
+    right: 24px !important;
+    z-index: 9900 !important; /* Pastikan selalu berada di atas teks/konten lain */
+    
+    /* Tambahan efek glass agar tetap terlihat jelas saat melewati area putih */
+    background: rgba(11, 25, 41, 0.7) !important; 
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
