@@ -195,6 +195,13 @@ body.loaded .hero-btn {
     box-sizing: border-box;
 }
 
+/* Kunci lebar layar agar tidak ada yang bisa meluber ke samping */
+html, body {
+    width: 100%;
+    max-width: 100vw !important;
+    overflow-x: clip !important; /* Ini gembok utamanya */
+}
+
 html {
     scroll-behavior: smooth !important;
 }
@@ -204,7 +211,6 @@ body {
     background: var(--gray-50);
     color: var(--dark);
     line-height: 1.6;
-    overflow-x: clip;
 }
 
 /* ---------- HERO SECTION ---------- */
@@ -276,18 +282,33 @@ body {
     left: 24px;
 }
 
+/* Tombol ENIEN Vertikal */
 .hero-btn--menu {
-    right: 24px;
-    flex-direction: column;
-    gap: 4px;
+    position: fixed !important;
+    top: 50% !important; 
+    right: 0 !important; /* Paksa nempel di ujung kanan layar */
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    height: auto !important;
+    background: var(--accent-lime) !important;
+    border: none !important;
+    border-radius: 12px 0 0 12px !important;
+    padding: 24px 10px !important;
+    z-index: 9900 !important;
+    cursor: pointer !important;
 }
 
 .hero-btn--menu span {
-    display: block;
-    width: 20px;
-    height: 2.5px;
-    background: var(--white);
-    border-radius: 2px;
+    display: block !important;
+    color: var(--dark) !important;
+    writing-mode: vertical-rl !important; /* Bikin teks jadi berdiri */
+    font-family: var(--font) !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 4px !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
 }
 
 /* ---------- Hero Typography ---------- */
@@ -1236,13 +1257,118 @@ main {
    FOOTER
    ============================================================ */
 .footer {
-    text-align: center;
-    padding: 36px 24px;
     background: var(--dark);
+    padding: 0;
+    transition: background var(--transition);
+    position: relative;
+}
+
+.footer__divider {
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* Kiri: Branding */
+.footer__brand {
+    flex-shrink: 0;
+}
+
+.footer__logo {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin: 0 0 4px;
+}
+
+.footer__copy {
+    font-size: 0.75rem;
     color: var(--gray-500);
-    font-size: 0.85rem;
+    margin: 0;
     letter-spacing: 0.3px;
-    transition: background var(--transition), color var(--transition);
+}
+
+/* Tengah: Navigasi */
+.footer__nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer__link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gray-500);
+    text-decoration: none;
+    transition: color var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.footer__link:hover {
+    color: var(--white);
+}
+
+/* Kanan: Sosial Media */
+.footer__social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--gray-500);
+    text-decoration: none;
+    transition: all var(--transition);
+}
+
+.footer__social-link:hover {
+    color: var(--white);
+    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Footer Responsive */
+@media (max-width: 768px) {
+    .footer__inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding: 32px 24px;
+    }
+
+    .footer__nav {
+        gap: 20px;
+    }
+
+    .footer__divider {
+        left: 0;
+        right: 0;
+    }
 }
 
 /* ============================================================
@@ -1322,6 +1448,87 @@ body.dark .penutup__heading em {
 
 body.dark .penutup__content p {
     color: rgba(255, 255, 255, 0.65);
+}
+
+/* ============================================================
+   QUOTE SECTION
+   ============================================================ */
+.quote-section {
+    background: var(--gray-100);
+    padding: 80px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background var(--transition);
+}
+
+.quote-section__inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quote-section__mark {
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 900;
+    color: var(--blue-primary);
+    line-height: 1;
+    margin-bottom: -10px;
+    opacity: 0.25;
+    user-select: none;
+}
+
+.quote-section__text {
+    font-size: clamp(1.25rem, 3.5vw, 1.85rem);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    border: none;
+    letter-spacing: 0.5px;
+    transition: color var(--transition);
+}
+
+.quote-section__line {
+    width: 60px;
+    height: 3px;
+    background: var(--blue-primary);
+    border-radius: 999px;
+    margin: 28px 0;
+}
+
+.quote-section__author {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gray-500);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color var(--transition);
+}
+
+/* Quote Dark Mode */
+body.dark .quote-section {
+    background: #0a1320;
+}
+
+body.dark .quote-section__mark {
+    opacity: 0.3;
+}
+
+body.dark .quote-section__text {
+    color: var(--white);
+}
+
+body.dark .quote-section__line {
+    background: var(--accent-lime);
+}
+
+body.dark .quote-section__author {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* ============================================================
@@ -1572,7 +1779,24 @@ body.dark .content-section p strong {
 /* --- Footer Dark Mode --- */
 body.dark .footer {
     background: #060f1a;
-    color: var(--gray-500);
+}
+
+body.dark .footer__divider {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+body.dark .footer__logo {
+    color: var(--gray-100);
+}
+
+body.dark .footer__link:hover {
+    color: var(--accent-lime);
+}
+
+body.dark .footer__social-link:hover {
+    color: var(--accent-lime);
+    border-color: var(--accent-lime);
+    background: rgba(195, 255, 90, 0.08);
 }
 
 /* ============================================================
@@ -1880,20 +2104,4 @@ body.dark .footer {
     border-color: rgba(195, 255, 90, 0.2);
     color: var(--accent-lime);
     transform: translateX(8px); /* Efek teks bergeser sedikit ke kanan saat di-hover */
-}
-
-/* ============================================================
-   STICKY MENU BUTTON
-   ============================================================ */
-.hero-btn--menu {
-    position: fixed !important; /* Kunci posisi tombol ke layar */
-    top: 24px !important;
-    right: 24px !important;
-    z-index: 9900 !important; /* Pastikan selalu berada di atas teks/konten lain */
-    
-    /* Tambahan efek glass agar tetap terlihat jelas saat melewati area putih */
-    background: rgba(11, 25, 41, 0.7) !important; 
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
