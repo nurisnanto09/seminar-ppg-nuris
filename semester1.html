@@ -8,7 +8,7 @@
     <meta name="description" content="Refleksi mata kuliah semester 1 PPG Informatika UNY oleh Nur Isnanto Nugroho.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         /* ========== PAGE HERO ========== */
@@ -55,6 +55,39 @@
         .page-hero__subtitle {
             font-size: 1rem; color: var(--white-80); max-width: 500px;
             margin: 0 auto; position: relative; z-index: 1;
+        }
+        /* ========== HERO DECORATIONS ========== */
+        .page-hero__decor {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.7;
+            animation: floatDecor 6s ease-in-out infinite;
+        }
+        .page-hero__decor--1 {
+            width: 140px; height: 140px;
+            top: -40px; right: 5%;
+            animation-delay: 0s;
+        }
+        .page-hero__decor--2 {
+            width: 32px; height: 32px;
+            bottom: 20px; left: 10%;
+            animation-delay: 1.5s;
+        }
+        .page-hero__decor--3 {
+            width: 40px; height: 40px;
+            top: 50px; left: 20%;
+            animation-delay: 3s;
+            transform: rotate(15deg);
+        }
+        .page-hero__decor--4 {
+            width: 50px; height: 50px;
+            bottom: 40px; right: 25%;
+            animation-delay: 4.5s;
+        }
+        @keyframes floatDecor {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(15deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
 
         /* ========== TAB NAVIGATION ========== */
@@ -395,8 +428,11 @@
             .tab-nav__inner { justify-content: flex-start; }
             .tab-btn { padding: 8px 14px; font-size: 0.75rem; }
             .mk-split { grid-template-columns: 1fr; }
-            .mk-pdf-card iframe { height: 280px; }
-            .mk-pdf-card__empty { height: 280px; }
+            
+            /* Sembunyikan iframe preview di HP agar tidak auto-download */
+            .mk-pdf-card iframe { display: none; }
+            .mk-pdf-card__empty { display: none; }
+            
             .mk-refleksi { padding: 28px 20px; }
             .mk-artefak__grid { grid-template-columns: 1fr; }
             .page-nav__btn { padding: 12px 16px; font-size: 0.8rem; }
@@ -408,6 +444,37 @@
 
     <!-- ========== HERO ========== -->
     <header class="page-hero">
+        <!-- Dekorasi Neon Pendukung -->
+        <div class="page-hero__decor page-hero__decor--1">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="40" stroke="var(--accent-lime)" stroke-width="3" stroke-dasharray="10 10"/>
+            </svg>
+        </div>
+        <div class="page-hero__decor page-hero__decor--2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+            </svg>
+        </div>
+        <div class="page-hero__decor page-hero__decor--3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 20 2 20"></polygon>
+            </svg>
+        </div>
+        <div class="page-hero__decor page-hero__decor--4">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="4" cy="4" r="2" fill="var(--accent-lime)"/>
+                <circle cx="20" cy="4" r="2" fill="var(--accent-lime)"/>
+                <circle cx="36" cy="4" r="2" fill="var(--accent-lime)"/>
+                <circle cx="4" cy="20" r="2" fill="var(--accent-lime)"/>
+                <circle cx="20" cy="20" r="2" fill="var(--accent-lime)"/>
+                <circle cx="36" cy="20" r="2" fill="var(--accent-lime)"/>
+                <circle cx="4" cy="36" r="2" fill="var(--accent-lime)"/>
+                <circle cx="20" cy="36" r="2" fill="var(--accent-lime)"/>
+                <circle cx="36" cy="36" r="2" fill="var(--accent-lime)"/>
+            </svg>
+        </div>
+
         <a href="index.html" class="page-hero__back">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
             Kembali
@@ -444,7 +511,7 @@
                         <div class="mk-pdf-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                         <div><p class="mk-pdf-card__name">LK 2 — Filosofi Pendidikan</p><p class="mk-pdf-card__filetype">PDF Document</p></div>
                     </div>
-                    <iframe src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Filosofi Pendidikan.pdf"></iframe>
+                    <iframe class="preview-iframe" data-src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Filosofi Pendidikan.pdf"></iframe>
                     <div class="mk-pdf-card__actions">
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Filosofi Pendidikan.pdf" target="_blank" class="mk-pdf-btn mk-pdf-btn--view"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>Lihat</a>
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Filosofi Pendidikan.pdf" download class="mk-pdf-btn mk-pdf-btn--download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>Download</a>
@@ -460,9 +527,21 @@
             <div class="mk-artefak">
                 <p class="mk-artefak__label">Daftar Artefak</p>
                 <div class="mk-artefak__grid">
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Filosofi Pendidikan.pdf', 'LK 2 — Filosofi Pendidikan')">
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/FP/25105260411_Nur Isnanto Nugroho_Tugas 1.D(4).pdf', 'Tugas 1.D')">
                         <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">LK 2 — Filosofi Pendidikan</p><p class="artefak-card__type">PDF Document</p></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Tugas 1.D</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/FP/25105260411_Nur Isnanto Nugroho_Mind Mapping Tugas 2D_Filosofi Pendidikan(4) (2).pdf', 'Mind Mapping Tugas 2D')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Mind Mapping Tugas 2D</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/FP/4.E. Refleksi dan Aksi Nyata_Nur Isnanto Nugroho(2) (2).pdf', 'Refleksi dan Aksi Nyata')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Refleksi dan Aksi Nyata</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/FP/2.5. Refleksi dan Tindak Lanjut-Nur Isnanto Nugroho(5) (1).pdf', 'Refleksi dan Tindak Lanjut')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Refleksi dan Tindak Lanjut</p><p class="artefak-card__type">PDF Document</p></div>
                     </div>
                 </div>
             </div>
@@ -480,7 +559,7 @@
                         <div class="mk-pdf-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                         <div><p class="mk-pdf-card__name">LK 2 — Peserta Didik</p><p class="mk-pdf-card__filetype">PDF Document</p></div>
                     </div>
-                    <iframe src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Peserta didik dan Pemahamannya.pdf"></iframe>
+                    <iframe class="preview-iframe" data-src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Peserta didik dan Pemahamannya.pdf"></iframe>
                     <div class="mk-pdf-card__actions">
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Peserta didik dan Pemahamannya.pdf" target="_blank" class="mk-pdf-btn mk-pdf-btn--view"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>Lihat</a>
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Peserta didik dan Pemahamannya.pdf" download class="mk-pdf-btn mk-pdf-btn--download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>Download</a>
@@ -496,9 +575,29 @@
             <div class="mk-artefak">
                 <p class="mk-artefak__label">Daftar Artefak</p>
                 <div class="mk-artefak__grid">
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Peserta didik dan Pemahamannya.pdf', 'LK 2 — Peserta Didik')">
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPDP/LK Kegiatan 1E_25105260411_Nur Isnanto Nugroho(2).pdf', 'LK Kegiatan 1E')">
                         <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">LK 2 — Peserta Didik</p><p class="artefak-card__type">PDF Document</p></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK Kegiatan 1E</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPDP/2.C. Diskusi Penyelesaian Kasus_Nugroho(2).pdf', 'Diskusi Penyelesaian Kasus')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Diskusi Penyelesaian Kasus</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPDP/3.E. Kegiatan RTL._Revdocx(1).pdf', 'Kegiatan RTL')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Kegiatan RTL</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPDP/Lembar Kerja Aktivitas 4D(2).pdf', 'LK Aktivitas 4D')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK Aktivitas 4D</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPDP/Lembar Kerja Aktivitas 4E_Nur Isnanto Nugroho_25105260411(1).pdf', 'LK Aktivitas 4E')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK Aktivitas 4E</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPDP/UAS_PPDP_Nur Isnanto Nugroho_ 25105260411(2).pdf', 'UAS PPDP')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">UAS PPDP</p><p class="artefak-card__type">PDF Document</p></div>
                     </div>
                 </div>
             </div>
@@ -516,7 +615,7 @@
                         <div class="mk-pdf-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                         <div><p class="mk-pdf-card__name">LK 2 — Pembelajaran & Asesmen</p><p class="mk-pdf-card__filetype">PDF Document</p></div>
                     </div>
-                    <iframe src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Pembelajaran Mendalam dan Asesmen Dasar.pdf"></iframe>
+                    <iframe class="preview-iframe" data-src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Pembelajaran Mendalam dan Asesmen Dasar.pdf"></iframe>
                     <div class="mk-pdf-card__actions">
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Pembelajaran Mendalam dan Asesmen Dasar.pdf" target="_blank" class="mk-pdf-btn mk-pdf-btn--view"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>Lihat</a>
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Pembelajaran Mendalam dan Asesmen Dasar.pdf" download class="mk-pdf-btn mk-pdf-btn--download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>Download</a>
@@ -532,9 +631,21 @@
             <div class="mk-artefak">
                 <p class="mk-artefak__label">Daftar Artefak</p>
                 <div class="mk-artefak__grid">
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Pembelajaran Mendalam dan Asesmen Dasar.pdf', 'LK 2 — Pembelajaran & Asesmen')">
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PMA/Nur Isnanto Nugroho_ 25105260411_1D Sintesis PMA Topik 1(1).pdf', '1D Sintesis PMA Topik 1')">
                         <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">LK 2 — Pembelajaran & Asesmen</p><p class="artefak-card__type">PDF Document</p></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">1D Sintesis PMA Topik 1</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PMA/4D Sintesis PMA_Nur Isnanto Nugroho_25105260411_PMA(1).pdf', '4D Sintesis PMA Topik 4')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">4D Sintesis PMA Topik 4</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PMA/Tugas UTS PMA_Nur Isnanto Nugoroho_25105260411(3).pdf', 'Tugas UTS PMA')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Tugas UTS PMA</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PMA/Tugas UAS PMA_Nur Isnanto Nugoroho_25105260411(2).pdf', 'Tugas UAS PMA')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">Tugas UAS PMA</p><p class="artefak-card__type">PDF Document</p></div>
                     </div>
                 </div>
             </div>
@@ -552,7 +663,7 @@
                         <div class="mk-pdf-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                         <div><p class="mk-pdf-card__name">LK 2 — PPL Terbimbing</p><p class="mk-pdf-card__filetype">PDF Document</p></div>
                     </div>
-                    <iframe src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Praktik Pengalaman Lapangan (PPL) Terbimbing.pdf"></iframe>
+                    <iframe class="preview-iframe" data-src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Praktik Pengalaman Lapangan (PPL) Terbimbing.pdf"></iframe>
                     <div class="mk-pdf-card__actions">
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Praktik Pengalaman Lapangan (PPL) Terbimbing.pdf" target="_blank" class="mk-pdf-btn mk-pdf-btn--view"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>Lihat</a>
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Praktik Pengalaman Lapangan (PPL) Terbimbing.pdf" download class="mk-pdf-btn mk-pdf-btn--download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>Download</a>
@@ -568,9 +679,25 @@
             <div class="mk-artefak">
                 <p class="mk-artefak__label">Daftar Artefak</p>
                 <div class="mk-artefak__grid">
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Nur Isnanto Nugroho_ 25105260411_LK 2- Mata Kuliah Praktik Pengalaman Lapangan (PPL) Terbimbing.pdf', 'LK 2 — PPL Terbimbing')">
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPL/LK.2 Observasi Lingkungan Belajar(1).pdf', 'LK.2 Observasi Lingkungan Belajar')">
                         <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">LK 2 — PPL Terbimbing</p><p class="artefak-card__type">PDF Document</p></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK.2 Observasi Lingkungan Belajar</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPL/LK.3.PPLT(2).pdf', 'LK.3.PPLT')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK.3.PPLT</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPL/LK.4.PPLT Siklus 1(2).pdf', 'LK.4.PPLT Siklus 1')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK.4.PPLT Siklus 1</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPL/LK.4.PPLT Siklus 2(2).pdf', 'LK.4.PPLT Siklus 2')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK.4.PPLT Siklus 2</p><p class="artefak-card__type">PDF Document</p></div>
+                    </div>
+                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/PPL/LK.4.PPLT Siklus 3(2).pdf', 'LK.4.PPLT Siklus 3')">
+                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                        <div class="artefak-card__info"><p class="artefak-card__name">LK.4.PPLT Siklus 3</p><p class="artefak-card__type">PDF Document</p></div>
                     </div>
                 </div>
             </div>
@@ -588,7 +715,7 @@
                         <div class="mk-pdf-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                         <div><p class="mk-pdf-card__name">LK 2 — Pembelajaran Kreatif dan Inovatif</p><p class="mk-pdf-card__filetype">PDF Document</p></div>
                     </div>
-                    <iframe src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pembelajaran Kreatif dan Inovatif.pdf"></iframe>
+                    <iframe class="preview-iframe" data-src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pembelajaran Kreatif dan Inovatif.pdf"></iframe>
                     <div class="mk-pdf-card__actions">
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pembelajaran Kreatif dan Inovatif.pdf" target="_blank" class="mk-pdf-btn mk-pdf-btn--view"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>Lihat</a>
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pembelajaran Kreatif dan Inovatif.pdf" download class="mk-pdf-btn mk-pdf-btn--download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>Download</a>
@@ -636,7 +763,7 @@
                         <div class="mk-pdf-card__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                         <div><p class="mk-pdf-card__name">LK 2 — Pola Pikir Bertumbuh</p><p class="mk-pdf-card__filetype">PDF Document</p></div>
                     </div>
-                    <iframe src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pola Pikir Bertumbuh (Growth Mindset).pdf"></iframe>
+                    <iframe class="preview-iframe" data-src="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pola Pikir Bertumbuh (Growth Mindset).pdf"></iframe>
                     <div class="mk-pdf-card__actions">
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pola Pikir Bertumbuh (Growth Mindset).pdf" target="_blank" class="mk-pdf-btn mk-pdf-btn--view"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>Lihat</a>
                         <a href="pdf/Nur Isnanto Nugroho_ 25105260411_LK 2-Matkul Pola Pikir Bertumbuh (Growth Mindset).pdf" download class="mk-pdf-btn mk-pdf-btn--download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>Download</a>
@@ -664,30 +791,7 @@
                         <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
                         <div class="artefak-card__info"><p class="artefak-card__name">LK 4.2 — Mengubah Responmu</p><p class="artefak-card__type">PDF Document</p></div>
                     </div>
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/GM/Proyek Kepemimpinan/Penugasan/Nur Isnanto Nugroho_ 25105260411_2.1 Penugasan Individu.pdf', 'Penugasan Individu')">
-                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">Penugasan Individu</p><p class="artefak-card__type">PDF Document</p></div>
-                    </div>
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/GM/Proyek Kepemimpinan/Penugasan/Nur Isnanto Nugroho_ 25105260411_2.1 Kegiatan 4.pdf', 'Kegiatan 4')">
-                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">Kegiatan 4</p><p class="artefak-card__type">PDF Document</p></div>
-                    </div>
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/GM/Proyek Kepemimpinan/Penugasan/Nur Isnanto Nugroho_ 25105260411_2.1 Kegiatan 5.pdf', 'Kegiatan 5')">
-                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">Kegiatan 5</p><p class="artefak-card__type">PDF Document</p></div>
-                    </div>
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/GM/Proyek Kepemimpinan/Teori/Topik 1/1.1 Guru Sebagai Agen Perubahan.pdf', 'Guru Sebagai Agen Perubahan')">
-                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">Guru Sebagai Agen Perubahan</p><p class="artefak-card__type">PDF Document</p></div>
-                    </div>
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/GM/Proyek Kepemimpinan/Teori/Topik 1/1.2 Service Learning Kepada Komunitas di Masyarakat.pdf', 'Service Learning')">
-                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">Service Learning</p><p class="artefak-card__type">PDF Document</p></div>
-                    </div>
-                    <div class="artefak-card" onclick="openPdfModal('pdf/Artefak/GM/Proyek Kepemimpinan/Teori/Topik 2/2.1 Tujuan Pembangunan Berkelanjutan (Sustainable Development Goals-SDGs).pdf', 'SDGs — Pembangunan Berkelanjutan')">
-                        <div class="artefak-card__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
-                        <div class="artefak-card__info"><p class="artefak-card__name">SDGs — Pembangunan Berkelanjutan</p><p class="artefak-card__type">PDF Document</p></div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -728,7 +832,7 @@
     </button>
 
     <!-- ========== FOOTER ========== -->
-    <footer class="footer reveal">
+    <footer class="footer">
         <div class="footer__inner">
             <!-- Kiri: Branding -->
             <div class="footer__brand">
@@ -799,7 +903,12 @@
             navIndicator.textContent = `${num} / 06`;
             prevBtn.classList.toggle('page-nav__btn--disabled', index === 0);
             nextBtn.classList.toggle('page-nav__btn--disabled', index === tabPanels.length - 1);
+            
+            // Scroll menu tab (horizontal)
             tabBtns[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            
+            // Auto scroll kembali ke atas saat ganti tab
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         tabBtns.forEach((btn, i) => btn.addEventListener('click', () => switchTab(i)));
@@ -848,6 +957,18 @@
             const isDark = document.body.classList.contains('dark');
             toggleText.textContent = isDark ? 'DARK_MODE' : 'LIGHT_MODE';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // ========== PREVENT AUTO-DOWNLOAD ON MOBILE ==========
+        // Hanya load iframe preview PDF jika layar lebih besar dari 768px (bukan HP)
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth > 768) {
+                document.querySelectorAll('.preview-iframe').forEach(iframe => {
+                    if (iframe.dataset.src) {
+                        iframe.src = iframe.dataset.src;
+                    }
+                });
+            }
         });
     </script>
 

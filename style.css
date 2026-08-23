@@ -1024,7 +1024,7 @@ body.dark .visi__heading em {
 
 .toc__title em {
     font-style: italic;
-    color: var(--gray-500);
+    color: var(--blue-primary);
 }
 
 .toc__list {
@@ -1144,7 +1144,7 @@ body.dark .toc__title {
 }
 
 body.dark .toc__title em {
-    color: var(--gray-500);
+    color: var(--accent-lime);
 }
 
 body.dark .toc__item {
@@ -1383,6 +1383,17 @@ main {
 .penutup__inner {
     max-width: 1100px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.penutup__text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .penutup__label {
@@ -1401,7 +1412,7 @@ main {
     font-weight: 900;
     color: var(--dark);
     line-height: 1.15;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: left;
     transition: color var(--transition);
 }
@@ -1427,6 +1438,63 @@ main {
 
 .penutup__content p:last-child {
     margin-bottom: 0;
+}
+
+/* Slider Dokumentasi */
+.penutup__slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background: var(--gray-200); /* Placeholder color if image fails */
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-wrapper .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slider-wrapper .slide.active {
+    opacity: 1;
+}
+
+.slider-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.slider-indicators .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.slider-indicators .indicator.active {
+    background: var(--white);
+    transform: scale(1.2);
 }
 
 /* Penutup Dark Mode */
@@ -1541,47 +1609,6 @@ body.dark .quote-section__author {
     transform: translateY(4px) scale(0.95) !important;
     background: var(--accent-lime-dark) !important;
     transition: transform 0.1s ease, background 0.1s ease;
-}
-
-/* Efek nyala dipicu oleh JavaScript */
-.animasi-nyala .toc__card {
-    animation: targetGlow 1.2s ease-out;
-}
-
-@keyframes targetGlow {
-    0% { 
-        transform: translateY(20px) scale(0.98);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    }
-    40% { 
-        transform: translateY(0) scale(1.02);
-        box-shadow: 0 0 40px rgba(195, 255, 90, 0.6); 
-    }
-    100% { 
-        transform: translateY(0) scale(1);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    }
-}
-
-/* 2. Animasi saat layar selesai meluncur ke Daftar Isi (Glow & Bounce) */
-#toc:target .toc__card {
-    animation: targetGlow 1.2s ease-out;
-}
-
-@keyframes targetGlow {
-    0% { 
-        transform: translateY(20px) scale(0.98);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    }
-    40% { 
-        transform: translateY(0) scale(1.02);
-        /* Warna ijo stabilo menyala di sekeliling kartu */
-        box-shadow: 0 0 40px rgba(195, 255, 90, 0.6); 
-    }
-    100% { 
-        transform: translateY(0) scale(1);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    }
 }
 
 @media (max-width: 768px) {
@@ -1847,8 +1874,8 @@ body.dark .footer__social-link:hover {
 /* 1. BADGE MAS GURU (Kiri - Turun ke area bahu kiri) */
     .floating-tag--guru {
         position: absolute;
-        top: 29%; /* Persentase diperbesar agar posisinya turun jauh ke bawah judul */
-        left: 55px;
+        top: 65%; /* Diturunkan agar pas di area bahu foto */
+        left: 20px;
         right: auto;
         font-size: 0.65rem; 
         padding: 4px 10px; 
@@ -1862,8 +1889,8 @@ body.dark .footer__social-link:hover {
     /* 2. BADGE GURU INFORMATIKA (Kanan - Turun ke area bahu kanan) */
     .hero__role-badge {
         position: absolute;
-        top: 48%; /* Sedikit lebih bawah dari badge kiri agar seimbang */
-        right: 55px;
+        top: 72%; /* Sedikit lebih bawah dari badge kiri agar seimbang */
+        right: 20px;
         bottom: auto;
         left: auto;
         margin: 0;
@@ -1872,9 +1899,23 @@ body.dark .footer__social-link:hover {
         z-index: 6;
     }
 
-    /* Menyembunyikan ornamen panah di versi mobile */
+    /* 3. Perkecil Teks Tombol NAVIGASI di Mobile */
+    .hero-btn--menu {
+        padding: 16px 8px !important;
+    }
+    
+    .hero-btn--menu span {
+        font-size: 0.7rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* 4. Sembunyikan ornamen panah dan tombol Daftar Isi di versi mobile */
     .doodle--arrow-inline,
     .doodle--arrow {
+        display: none !important;
+    }
+
+    .hero__cta-group {
         display: none !important;
     }
 
@@ -2104,4 +2145,25 @@ body.dark .footer__social-link:hover {
     border-color: rgba(195, 255, 90, 0.2);
     color: var(--accent-lime);
     transform: translateX(8px); /* Efek teks bergeser sedikit ke kanan saat di-hover */
-}
+}@media (max-width: 768px) { .penutup__inner { grid-template-columns: 1fr; } }
+
+/* Font latin tebal (Pacifico) untuk tulisan bawah di judul section */
+.visi__heading em, .toc__title em, .penutup__heading em { font-family: 'Pacifico', cursive !important; font-style: normal !important; font-weight: 400 !important; letter-spacing: 2px !important; }
+
+/* UI Popup Custom */
+.ui-popup-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 100000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+.ui-popup-overlay.active { opacity: 1; visibility: visible; }
+.ui-popup-box { background: var(--white); width: 90%; max-width: 360px; padding: 40px 30px; border-radius: 20px; text-align: center; position: relative; transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.ui-popup-overlay.active .ui-popup-box { transform: scale(1); }
+.ui-popup-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--gray-500); cursor: pointer; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 5px; }
+.ui-popup-close:hover { color: var(--red-500, #ff4444); }
+.ui-popup-icon { font-size: 3rem; margin-bottom: 20px; }
+.ui-popup-title { font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+.ui-popup-desc { font-size: 0.95rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 25px; }
+.ui-popup-btn { background: var(--blue-primary); color: var(--white); border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: background 0.2s; width: 100%; }
+.ui-popup-btn:hover { background: var(--blue-dark); }
+body.dark .ui-popup-box { background: var(--dark); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+body.dark .ui-popup-title { color: #ffffff; }
+body.dark .ui-popup-desc { color: rgba(255, 255, 255, 0.7); }
+body.dark .ui-popup-close { color: rgba(255, 255, 255, 0.5); }
+body.dark .ui-popup-close:hover { color: #ffffff; }

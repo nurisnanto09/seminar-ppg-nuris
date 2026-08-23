@@ -8,7 +8,7 @@
     <meta name="description" content="Portofolio Seminar Pendidikan E-Portfolio oleh Nur Isnanto Nugroho, Mahasiswa PPG Informatika UNY.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,6 +41,21 @@
     <div class="loader" id="loader">
         <div class="loader__ring-wrap"> 
             <div class="loader__ring-spin" id="loaderRing"></div>
+        </div>
+    </div>
+    <!-- ============ CUSTOM POPUP ============ -->
+    <div class="ui-popup-overlay" id="uiPopup">
+        <div class="ui-popup-box">
+            <button class="ui-popup-close" onclick="closePopup()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="ui-popup-icon">🚧</div>
+            <h3 class="ui-popup-title">Dalam Pengerjaan</h3>
+            <p class="ui-popup-desc">Maaf, halaman ini sedang dalam tahap pengerjaan dan belum bisa diakses.</p>
+            <button class="ui-popup-btn" onclick="closePopup()">Tutup</button>
         </div>
     </div>
 
@@ -81,7 +96,6 @@
             <span class="floating-tag__icon">🎓</span>
             Mas Guru
         </div>
-
         <div class="hero__cta-group">
             <!-- Panah ada di luar tag <a> -->
             <svg class="doodle doodle--arrow-inline" viewBox="0 0 60 30" fill="none" stroke="#c3ff5a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
@@ -90,11 +104,10 @@
             </svg>
             
             <!-- Tombol Daftar Isi -->
-<!-- Tombol dengan ID khusus agar tidak bentrok -->
-    <a href="#" id="btnLuncurTOC" class="floating-tag floating-tag--open">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-        Daftar Isi
-    </a>
+            <a href="#" id="btnLuncurTOC" class="floating-tag floating-tag--open">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+                Daftar Isi
+            </a>
         </div>
 
         <!-- Profile Card (glassmorphism) -->
@@ -208,7 +221,7 @@
     <!-- ============ TABLE OF CONTENTS ============ -->
     <nav class="toc" id="toc">
 
-        <div class="toc__card reveal reveal--scale" data-delay="150">
+        <div class="toc__card reveal" data-delay="150">
             <p class="toc__label">[02] DAFTAR ISI</p>
             <h2 class="toc__title">Daftar Isi<br><em>Portofolio</em></h2>
 
@@ -223,7 +236,7 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                     </span>
                 </a>
-                <a href="#semester-2" class="toc__item">
+                <a href="#" onclick="showPopup(); return false;" class="toc__item">
                     <span class="toc__item-num">02</span>
                     <span class="toc__item-info">
                         <span class="toc__item-name">Refleksi Matkul Semester 2</span>
@@ -233,7 +246,7 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                     </span>
                 </a>
-                <a href="#pengalaman-ppg" class="toc__item">
+                <a href="#" onclick="showPopup(); return false;" class="toc__item">
                     <span class="toc__item-num">03</span>
                     <span class="toc__item-info">
                         <span class="toc__item-name">Pengalaman PPG</span>
@@ -243,7 +256,7 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                     </span>
                 </a>
-                <a href="#karya-inovatif" class="toc__item">
+                <a href="#" onclick="showPopup(); return false;" class="toc__item">
                     <span class="toc__item-num">04</span>
                     <span class="toc__item-info">
                         <span class="toc__item-name">Hasil Karya Inovatif</span>
@@ -260,11 +273,42 @@
     <!-- ============ PENUTUP SECTION ============ -->
     <section class="penutup" id="penutup">
         <div class="penutup__inner">
-            <p class="penutup__label reveal">[03] Penutup</p>
-            <h2 class="penutup__heading reveal" data-delay="100">Refleksi &<br><em>Harapan</em></h2>
-            <div class="penutup__content reveal" data-delay="200">
-                <p>Seluruh proses yang telah dijalani selama masa PPG memberikan pengalaman berharga yang membentuk pemahaman saya tentang menjadi pendidik profesional. Setiap tantangan, kolaborasi, dan refleksi menjadi fondasi dalam membangun kompetensi pedagogik dan kepribadian sebagai calon guru.</p>
-                <p>Ke depan, saya berharap dapat terus mengembangkan diri sebagai pendidik yang mampu beradaptasi dengan perkembangan teknologi, memahami kebutuhan peserta didik, serta berkontribusi nyata dalam mewujudkan pendidikan Indonesia yang berkualitas dan berkarakter.</p>
+            <div class="penutup__slider reveal" data-delay="100">
+                <div class="slider-wrapper" id="dokSlider">
+                    <img src="img/dokumentasi/dok-aktivitas1.jpg" alt="Dokumentasi Mengajar" class="slide active">
+                    <img src="img/dokumentasi/dok-aktivitas2.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-budaya1.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-diskusi1.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-evaluasi1.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-kelas1.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-kolaborasi1.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-lomba-komik.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-lomba-poster.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-presentasi1.jpg" alt="Dokumentasi Mengajar" class="slide">
+                    <img src="img/dokumentasi/dok-presentasi2.jpg" alt="Dokumentasi Mengajar" class="slide">
+                </div>
+                <div class="slider-indicators" id="dokIndicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                </div>
+            </div>
+            
+            <div class="penutup__text">
+                <p class="penutup__label reveal" data-delay="200">[03] Penutup</p>
+                <h2 class="penutup__heading reveal" data-delay="300">Refleksi &<br><em>Harapan</em></h2>
+                <div class="penutup__content reveal" data-delay="400">
+                    <p>Seluruh proses yang telah dijalani selama masa PPG memberikan pengalaman berharga yang membentuk pemahaman saya tentang menjadi pendidik profesional. Setiap tantangan, kolaborasi, dan refleksi menjadi fondasi dalam membangun kompetensi pedagogik dan kepribadian sebagai calon guru.</p>
+                    <p>Ke depan, saya berharap dapat terus mengembangkan diri sebagai pendidik yang mampu beradaptasi dengan perkembangan teknologi, memahami kebutuhan peserta didik, serta berkontribusi nyata dalam mewujudkan pendidikan Indonesia yang berkualitas dan berkarakter.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -274,7 +318,7 @@
         <div class="quote-section__inner">
             <div class="quote-section__mark reveal">&ldquo;</div>
             <blockquote class="quote-section__text reveal" data-delay="100">
-                Membuat gelas penuh menjadi berwarna, bukan membuang isinya lalu diisi ulang.
+                Setiap anak membawa isi yang berbeda; tugas guru bukan menggantinya, tetapi mengembangkannya.
             </blockquote>
             <div class="quote-section__line reveal" data-delay="200"></div>
             <p class="quote-section__author reveal" data-delay="300">&mdash; Nur Isnanto Nugroho</p>
@@ -462,41 +506,95 @@
             }
         });
 
+        // LEFT SIDEBAR MENU (HAMBURGER BUTTON)
         // =======================================================
-            // LEFT SIDEBAR MENU (HAMBURGER BUTTON)
-            // =======================================================
-            const btnMenu = document.querySelector('.hero-btn--menu');
-            const sidebarNav = document.getElementById('sidebarNav');
-            const btnCloseMenu = document.getElementById('btnCloseMenu');
-            const menuBackdrop = document.getElementById('menuBackdrop');
-            const menuLinks = document.querySelectorAll('.sidebar-nav__link');
+        const btnMenu = document.querySelector('.hero-btn--menu');
+        const sidebarNav = document.getElementById('sidebarNav');
+        const btnCloseMenu = document.getElementById('btnCloseMenu');
+        const menuBackdrop = document.getElementById('menuBackdrop');
+        const menuLinks = document.querySelectorAll('.sidebar-nav__link');
 
-            if (btnMenu && sidebarNav && btnCloseMenu && menuBackdrop) {
-                // 1. Fungsi buka menu
-                btnMenu.addEventListener('click', () => {
-                    sidebarNav.classList.add('is-open');
-                    menuBackdrop.classList.add('is-active');
-                    document.body.style.overflow = 'hidden'; // Kunci scroll layar utama
-                });
+        if (btnMenu && sidebarNav && btnCloseMenu && menuBackdrop) {
+            // 1. Fungsi buka menu
+            btnMenu.addEventListener('click', () => {
+                sidebarNav.classList.add('is-open');
+                menuBackdrop.classList.add('is-active');
+                document.body.style.overflow = 'hidden'; // Kunci scroll layar utama
+            });
 
-                // 2. Fungsi tutup menu (dijadikan function agar bisa dipakai berulang)
-                const closeMenu = () => {
-                    sidebarNav.classList.remove('is-open');
-                    menuBackdrop.classList.remove('is-active');
-                    document.body.style.overflow = ''; 
-                };
+            // 2. Fungsi tutup menu (dijadikan function agar bisa dipakai berulang)
+            const closeMenu = () => {
+                sidebarNav.classList.remove('is-open');
+                menuBackdrop.classList.remove('is-active');
+                document.body.style.overflow = ''; 
+            };
 
-                // 3. Tutup saat tombol X diklik
-                btnCloseMenu.addEventListener('click', closeMenu);
+            // 3. Tutup saat tombol X diklik
+            btnCloseMenu.addEventListener('click', closeMenu);
 
-                // 4. Tutup saat layar gelap (luar menu) diklik
-                menuBackdrop.addEventListener('click', closeMenu);
+            // 4. Tutup saat layar gelap (luar menu) diklik
+            menuBackdrop.addEventListener('click', closeMenu);
 
-                // 5. Tutup saat salah satu menu dipilih
-                menuLinks.forEach(link => {
-                    link.addEventListener('click', closeMenu);
-                });
+            // 5. Tutup saat salah satu menu dipilih
+            menuLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+        }
+
+        // =======================================================
+        // SLIDER DOKUMENTASI (AUTO PLAY)
+        // =======================================================
+        const dokSlides = document.querySelectorAll('#dokSlider .slide');
+        const dokIndicators = document.querySelectorAll('#dokIndicators .indicator');
+        let currentSlide = 0;
+        let slideInterval;
+
+        if (dokSlides && dokSlides.length > 0) {
+            function nextSlide() {
+                dokSlides[currentSlide].classList.remove('active');
+                dokIndicators[currentSlide].classList.remove('active');
+                
+                currentSlide = (currentSlide + 1) % dokSlides.length;
+                
+                dokSlides[currentSlide].classList.add('active');
+                dokIndicators[currentSlide].classList.add('active');
             }
+
+            function startSlideShow() {
+                slideInterval = setInterval(nextSlide, 3500); // Ganti tiap 3.5 detik
+            }
+
+            function setSlide(index) {
+                clearInterval(slideInterval);
+                dokSlides[currentSlide].classList.remove('active');
+                dokIndicators[currentSlide].classList.remove('active');
+                
+                currentSlide = index;
+                
+                dokSlides[currentSlide].classList.add('active');
+                dokIndicators[currentSlide].classList.add('active');
+                startSlideShow(); // restart interval
+            }
+
+            dokIndicators.forEach((ind, i) => {
+                ind.addEventListener('click', () => setSlide(i));
+            });
+
+            startSlideShow();
+        }
+
+        // =======================================================
+        // CUSTOM UI POPUP
+        // =======================================================
+        const uiPopup = document.getElementById('uiPopup');
+        function showPopup() {
+            uiPopup.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePopup() {
+            uiPopup.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     </script>
 </body>
 </html>
