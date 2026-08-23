@@ -1874,12 +1874,13 @@ body.dark .footer__social-link:hover {
 /* 1. BADGE MAS GURU (Kiri - Turun ke area bahu kiri) */
     .floating-tag--guru {
         position: absolute;
-        top: 65%; /* Diturunkan agar pas di area bahu foto */
-        left: 20px;
+        bottom: 22%; /* Berpatokan dari bawah agar pasti jatuh di area badan */
+        top: auto;
+        left: 15px;
         right: auto;
         font-size: 0.65rem; 
         padding: 4px 10px; 
-        z-index: 6;
+        z-index: 10; /* Pastikan di atas layer foto */
     }
     
     .floating-tag--guru .floating-tag__icon {
@@ -1889,14 +1890,14 @@ body.dark .footer__social-link:hover {
     /* 2. BADGE GURU INFORMATIKA (Kanan - Turun ke area bahu kanan) */
     .hero__role-badge {
         position: absolute;
-        top: 72%; /* Sedikit lebih bawah dari badge kiri agar seimbang */
-        right: 20px;
-        bottom: auto;
+        bottom: 15%; /* Sedikit lebih rendah di sebelah kanan */
+        top: auto;
+        right: 15px;
         left: auto;
         margin: 0;
         font-size: 0.65rem; 
         padding: 4px 10px; 
-        z-index: 6;
+        z-index: 10; /* Pastikan di atas layer foto */
     }
 
     /* 3. Perkecil Teks Tombol NAVIGASI di Mobile */
