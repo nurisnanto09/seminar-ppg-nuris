@@ -39,22 +39,30 @@
             font-size: 0.9rem;
             z-index: 2;
             transition: color 0.3s ease;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.2s;
         }
         .page-hero__back:hover { color: var(--white); }
         .page-hero__label {
             font-size: 0.75rem; font-weight: 700; color: var(--accent-lime);
             text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px;
             position: relative; z-index: 1;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.4s;
         }
         .page-hero__title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(3rem, 10vw, 6rem); font-weight: 400; color: var(--white);
             letter-spacing: 4px; line-height: 1; margin-bottom: 12px;
             position: relative; z-index: 1;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.6s;
         }
         .page-hero__subtitle {
             font-size: 1rem; color: var(--white-80); max-width: 500px;
             margin: 0 auto; position: relative; z-index: 1;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.8s;
         }
         /* ========== HERO DECORATIONS ========== */
         .page-hero__decor {
@@ -168,6 +176,8 @@
             z-index: 50;
             transition: top 0.3s ease, background 0.3s ease;
             overflow-x: auto;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 1s;
         }
         body.banner-stuck .tab-nav {
             top: 56px; /* Turun menyesuaikan tinggi sticky banner */
