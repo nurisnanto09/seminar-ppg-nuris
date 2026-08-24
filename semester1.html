@@ -511,8 +511,8 @@
             .tab-btn { padding: 8px 14px; font-size: 0.75rem; }
             .mk-split { grid-template-columns: 1fr; }
             
-            /* Sembunyikan iframe preview di HP agar tidak auto-download */
-            .mk-pdf-card iframe { display: none; }
+            /* Sembunyikan iframe preview di HP agar tidak auto-download (dihapus atas permintaan) */
+            /* .mk-pdf-card iframe { display: none; } */
             .mk-pdf-card__empty { display: none; }
             
             .mk-refleksi { padding: 28px 20px; }
@@ -1101,16 +1101,13 @@
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
 
-        // ========== PREVENT AUTO-DOWNLOAD ON MOBILE ==========
-        // Hanya load iframe preview PDF jika layar lebih besar dari 768px (bukan HP)
+        // ========== LOAD IFRAME PREVIEW PDF ==========
         window.addEventListener('DOMContentLoaded', () => {
-            if (window.innerWidth > 768) {
-                document.querySelectorAll('.preview-iframe').forEach(iframe => {
-                    if (iframe.dataset.src) {
-                        iframe.src = iframe.dataset.src;
-                    }
-                });
-            }
+            document.querySelectorAll('.preview-iframe').forEach(iframe => {
+                if (iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                }
+            });
         });
 
         // ========== STICKY BANNER ON SCROLL ==========
