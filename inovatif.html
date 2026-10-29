@@ -391,6 +391,41 @@
             margin-bottom: 18px;
         }
 
+        .canva-footer {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.04), rgba(6, 182, 212, 0.04));
+            border-top: 1px solid var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.82rem;
+            color: var(--gray-500);
+        }
+        .canva-footer__author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .canva-footer__author a {
+            color: #7d2ae8;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .canva-footer__author a:hover {
+            color: #00c4cc;
+            text-decoration: underline;
+        }
+        .canva-footer__hint {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         /* ========== DISPLAY LKPD DIGITAL CARD & PREVIEW ========== */
         .lkpd-display-card {
             background: var(--white);
@@ -1153,6 +1188,17 @@
             border-color: rgba(255, 255, 255, 0.12);
             color: #e2e8f0;
         }
+        body.dark .canva-footer {
+            background: #091220;
+            border-top-color: rgba(255, 255, 255, 0.08);
+            color: #9ca3af;
+        }
+        body.dark .canva-footer__author a {
+            color: #38bdf8;
+        }
+        body.dark .canva-footer__hint {
+            color: #64748b;
+        }
         body.dark .lkpd-live-side {
             background: #091220;
             border-right-color: rgba(255, 255, 255, 0.08);
@@ -1315,16 +1361,16 @@
                     <div class="canva-header__info">
                         <div class="canva-badge-icon">C</div>
                         <div class="canva-title-box">
-                            <h3>Pitch Deck Desain Karya Inovatif</h3>
-                            <p>Canva Interactive Embed &bull; Format 16:9 HD</p>
+                            <h3>Seminar PPG &amp; Karya Inovatif</h3>
+                            <p>Canva Interactive Embed &bull; Format 16:9 HD &bull; Disusun oleh Nur Isnanto Nugroho</p>
                         </div>
                     </div>
                     <div class="canva-actions">
-                        <button class="canva-btn canva-btn--outline" onclick="toggleFullscreenCanva()">
+                        <button class="canva-btn canva-btn--outline" onclick="toggleFullscreenCanva()" title="Tampilkan Layar Penuh">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
                             Layar Penuh
                         </button>
-                        <a href="https://www.canva.com" target="_blank" rel="noopener" class="canva-btn canva-btn--primary" id="btnOpenCanva">
+                        <a href="https://www.canva.com/design/DAHZb-XhmY0/f2Qyr-0UePVu1meU1bpnQg/view?utm_content=DAHZb-XhmY0&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" class="canva-btn canva-btn--primary" id="btnOpenCanva">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             Buka di Canva
                         </a>
@@ -1333,15 +1379,15 @@
 
                 <!-- 16:9 Responsive Embed Slot -->
                 <div class="canva-screen-frame" id="canvaFrameContainer">
-                    <!-- If user provides a direct Canva embed URL, it loads here. Fallback container is active by default with direct Canva loading capability -->
                     <iframe id="canvaIframe" 
-                            src="" 
-                            data-canva-embed="https://www.canva.com/design/DAG.../view?embed" 
+                            src="https://www.canva.com/design/DAHZb-XhmY0/f2Qyr-0UePVu1meU1bpnQg/view?embed" 
+                            data-canva-embed="https://www.canva.com/design/DAHZb-XhmY0/f2Qyr-0UePVu1meU1bpnQg/view?embed" 
+                            loading="lazy"
                             allowfullscreen="allowfullscreen" 
                             allow="fullscreen"
-                            title="Canva Presentation"></iframe>
+                            title="Seminar PPG &amp; Karya Inovatif - Canva Presentation"></iframe>
                     
-                    <div class="canva-empty-fallback" id="canvaFallback">
+                    <div class="canva-empty-fallback" id="canvaFallback" style="display: none;">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                             <line x1="8" y1="21" x2="16" y2="21"/>
@@ -1358,6 +1404,17 @@
                                 <span>📄</span> Lihat Dokumen LK 4
                             </a>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Attribution Footer -->
+                <div class="canva-footer">
+                    <div class="canva-footer__author">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span><a href="https://www.canva.com/design/DAHZb-XhmY0/f2Qyr-0UePVu1meU1bpnQg/view?utm_content=DAHZb-XhmY0&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Seminar PPG &amp; Karya Inovatif</a> oleh Peserta PPG 30735</span>
+                    </div>
+                    <div class="canva-footer__hint">
+                        <span>💡 Tip: Gunakan tombol <strong>Layar Penuh</strong> atau navigasi slide untuk tampilan presentasi interaktif</span>
                     </div>
                 </div>
             </div>
@@ -1893,8 +1950,11 @@
         const canvaFrameContainer = document.getElementById('canvaFrameContainer');
         const btnOpenCanva = document.getElementById('btnOpenCanva');
 
-        // Cek apakah ada embed URL tersimpan di localStorage
-        const savedCanvaUrl = localStorage.getItem('canva_embed_url');
+        const DEFAULT_CANVA_EMBED = "https://www.canva.com/design/DAHZb-XhmY0/f2Qyr-0UePVu1meU1bpnQg/view?embed";
+        const DEFAULT_CANVA_VIEW = "https://www.canva.com/design/DAHZb-XhmY0/f2Qyr-0UePVu1meU1bpnQg/view?utm_content=DAHZb-XhmY0&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
+
+        // Inisialisasi: Gunakan URL dari localStorage jika pernah diubah, atau gunakan default
+        const savedCanvaUrl = localStorage.getItem('canva_embed_url') || DEFAULT_CANVA_EMBED;
         if (savedCanvaUrl) {
             loadCanvaPresentation(savedCanvaUrl);
         }
@@ -1902,14 +1962,21 @@
         function loadCanvaPresentation(url) {
             canvaIframe.src = url;
             canvaIframe.style.display = 'block';
-            canvaFallback.style.display = 'none';
-            btnOpenCanva.href = url.replace('?embed', '');
+            if (canvaFallback) canvaFallback.style.display = 'none';
+            if (btnOpenCanva) {
+                if (url.includes('DAHZb-XhmY0')) {
+                    btnOpenCanva.href = DEFAULT_CANVA_VIEW;
+                } else {
+                    btnOpenCanva.href = url.replace('?embed', '').replace('&embed', '');
+                }
+            }
         }
 
         function promptCanvaUrl() {
+            const currentUrl = localStorage.getItem('canva_embed_url') || DEFAULT_CANVA_EMBED;
             const url = prompt(
                 "Masukkan link embed Canva presentasi Anda:\n(Contoh: https://www.canva.com/design/DA.../view?embed atau link berbagi Canva)",
-                savedCanvaUrl || ""
+                currentUrl
             );
             if (url && url.trim() !== "") {
                 let cleanUrl = url.trim();
