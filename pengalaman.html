@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengalaman PPG - E-Portfolio PPG UNY</title>
+    <link rel="icon" type="image/png" href="img/Icon atas.png">
+    <meta name="description" content="Refleksi komprehensif pengalaman belajar PPG Calon Guru Informatika UNY oleh Nur Isnanto Nugroho, mencakup visi pendidikan, guru profesional, rencana tindak lanjut, dan integrasi mata kuliah.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ========== PAGE HERO ========== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            padding: 80px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .page-hero__back {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--white-80);
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+            transition: color 0.3s ease;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.2s;
+        }
+        .page-hero__back:hover { color: var(--white); }
+        .page-hero__label {
+            font-size: 0.75rem; font-weight: 700; color: var(--accent-lime);
+            text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px;
+            position: relative; z-index: 1;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.4s;
+        }
+        .page-hero__title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 5.8rem); font-weight: 400; color: var(--white);
+            letter-spacing: 4px; line-height: 1; margin-bottom: 12px;
+            position: relative; z-index: 1;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.6s;
+        }
+        .page-hero__subtitle {
+            font-size: 1.05rem; color: var(--white-80); max-width: 650px;
+            margin: 0 auto; position: relative; z-index: 1; line-height: 1.6;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 0.8s;
+        }
+
+        /* Hero Quick Links */
+        .page-hero__quick-actions {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 1s;
+        }
+        .hero-pill-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .hero-pill-btn:hover {
+            background: var(--accent-lime);
+            color: var(--dark);
+            border-color: var(--accent-lime);
+            transform: translateY(-2px);
+        }
+
+        /* ========== HERO DECORATIONS ========== */
+        .page-hero__decor {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.7;
+            animation: floatDecor 6s ease-in-out infinite;
+        }
+        .page-hero__decor--1 {
+            width: 140px; height: 140px;
+            top: -40px; right: 5%;
+            animation-delay: 0s;
+        }
+        .page-hero__decor--2 {
+            width: 32px; height: 32px;
+            bottom: 20px; left: 8%;
+            animation-delay: 1.5s;
+        }
+        .page-hero__decor--3 {
+            width: 44px; height: 44px;
+            top: 45px; left: 16%;
+            animation-delay: 3s;
+            transform: rotate(15deg);
+        }
+        .page-hero__decor--4 {
+            width: 50px; height: 50px;
+            bottom: 40px; right: 20%;
+            animation-delay: 4.5s;
+        }
+        @keyframes floatDecor {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(15deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .page-hero__decor-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.85;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .page-hero__decor-line svg {
+            width: 100%;
+            height: 100%;
+        }
+        .animated-path {
+            stroke-dasharray: 2000, 2000;
+            stroke-dashoffset: 2000;
+            animation: drawPath 12s ease-in-out infinite;
+        }
+        @keyframes drawPath {
+            0% { stroke-dashoffset: 2000; }
+            100% { stroke-dashoffset: -2000; }
+        }
+
+        /* ========== STICKY BANNER ========== */
+        .sticky-banner {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            padding: 10px 24px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .sticky-banner.is-visible {
+            transform: translateY(0);
+        }
+        .sticky-banner__back {
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .sticky-banner__text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .sticky-banner__subtitle {
+            font-size: 0.65rem;
+            color: var(--accent-lime);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .sticky-banner__title {
+            font-size: 1.2rem;
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1.5px;
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* ========== TAB NAVIGATION ========== */
+        .tab-nav {
+            background: var(--white);
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: top 0.3s ease, background 0.3s ease;
+            overflow-x: auto;
+            opacity: 0;
+            animation: heroFadeUp 0.8s ease forwards 1s;
+        }
+        body.banner-stuck .tab-nav {
+            top: 56px;
+        }
+        .tab-nav__inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        .tab-btn {
+            background: none;
+            border: 2px solid transparent;
+            padding: 10px 18px;
+            font-family: var(--font);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            cursor: pointer;
+            white-space: nowrap;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tab-btn:hover {
+            color: var(--blue-primary);
+            background: rgba(26, 92, 255, 0.06);
+            border-color: rgba(26, 92, 255, 0.15);
+        }
+        .tab-btn.active {
+            color: var(--white);
+            background: var(--blue-primary);
+            border-color: var(--blue-primary);
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(26, 92, 255, 0.25);
+        }
+
+        /* ========== TAB CONTENT ========== */
+        .tab-content {
+            background: var(--gray-50);
+            min-height: 60vh;
+            padding: 0 24px;
+            transition: background 0.3s ease;
+        }
+        .tab-panel {
+            display: none;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 48px 0 60px;
+        }
+        .tab-panel.active {
+            display: block;
+            animation: fadeInPanel 0.5s ease both;
+        }
+        @keyframes fadeInPanel {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-panel__header { margin-bottom: 32px; }
+        .tab-panel__num {
+            font-size: 0.75rem; font-weight: 700; color: var(--blue-primary);
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;
+        }
+        .tab-panel__title {
+            font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 900;
+            color: var(--dark); line-height: 1.25; margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .tab-panel__desc {
+            font-size: 1rem; color: var(--gray-500); max-width: 750px;
+            line-height: 1.6;
+        }
+
+        /* ========== CONTENT CARDS & GRIDS ========== */
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            margin-bottom: 28px;
+            border: 1px solid var(--gray-100);
+            transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .content-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.09);
+        }
+        .content-card__tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--blue-primary);
+            background: rgba(26, 92, 255, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+        .content-card__title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.35;
+        }
+        .content-card p {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--gray-500);
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+        .content-card p:last-child { margin-bottom: 0; }
+
+        /* Feature Pillars Grid (3 Hal Memulai Karier) */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+            margin-bottom: 28px;
+        }
+        .pillar-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-100);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--blue-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 36px rgba(26, 92, 255, 0.12);
+            border-color: rgba(26, 92, 255, 0.25);
+        }
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+        .pillar-card__top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .pillar-card__num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            line-height: 1;
+            color: var(--blue-primary);
+            opacity: 0.85;
+        }
+        .pillar-card__icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(26, 92, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue-primary);
+            transition: all 0.3s ease;
+        }
+        .pillar-card:hover .pillar-card__icon {
+            background: var(--blue-primary);
+            color: #fff;
+            transform: scale(1.08) rotate(5deg);
+        }
+        .pillar-card__title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+        .pillar-card__desc {
+            font-size: 0.92rem;
+            line-height: 1.75;
+            color: var(--gray-500);
+            flex-grow: 1;
+            text-align: justify;
+        }
+        .pillar-card__badges {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--gray-100);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .pill-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 8px;
+            background: var(--gray-50);
+            color: var(--gray-700);
+            border: 1px solid var(--gray-100);
+        }
+
+        /* Highlight Grid (Concept Boxes in Tab 1 & Tab 2) */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .concept-box {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+            border-radius: 16px;
+            padding: 20px 18px;
+            transition: all 0.3s ease;
+        }
+        .concept-box:hover {
+            background: var(--white);
+            border-color: rgba(26, 92, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+        .concept-box__icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .concept-box__name {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        .concept-box__desc {
+            font-size: 0.84rem;
+            line-height: 1.6;
+            color: var(--gray-500);
+        }
+
+        /* 8 Keterampilan Dasar Mengajar Mini Badges */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .skill-item {
+            background: var(--gray-50);
+            border-left: 3px solid var(--blue-primary);
+            padding: 12px 14px;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+        .skill-item:hover {
+            background: rgba(26, 92, 255, 0.08);
+            transform: translateX(4px);
+        }
+
+        /* Interactive Quote Block */
+        .quote-callout {
+            background: linear-gradient(135deg, rgba(26, 92, 255, 0.04), rgba(195, 255, 90, 0.08));
+            border-left: 4px solid var(--accent-lime-dark);
+            border-radius: 0 16px 16px 0;
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+        .quote-callout p {
+            font-size: 1rem !important;
+            font-style: italic;
+            color: var(--dark) !important;
+            line-height: 1.7 !important;
+            margin-bottom: 6px !important;
+        }
+        .quote-callout span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--blue-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ========== INTEGRASI MATA KULIAH (TAB 4) ========== */
+        .integration-matrix {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .integration-cluster {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s ease;
+        }
+        .integration-cluster:hover {
+            border-color: rgba(26, 92, 255, 0.3);
+            box-shadow: 0 8px 28px rgba(26, 92, 255, 0.08);
+        }
+        .integration-cluster__header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .integration-cluster__badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(26, 92, 255, 0.1);
+            color: var(--blue-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .integration-cluster__title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+        .integration-cluster__desc {
+            font-size: 0.92rem;
+            line-height: 1.75;
+            color: var(--gray-500);
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        .cluster-courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .course-tag-card {
+            background: var(--gray-50);
+            border-radius: 12px;
+            padding: 14px 16px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.25s ease;
+        }
+        .course-tag-card:hover {
+            background: rgba(26, 92, 255, 0.05);
+            border-color: rgba(26, 92, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .course-tag-card__title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--blue-primary);
+            margin-bottom: 4px;
+        }
+        .course-tag-card__role {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        /* Visual Flow Diagram */
+        .synthesis-flow {
+            background: linear-gradient(135deg, #111827, #0f172a);
+            border-radius: 20px;
+            padding: 32px 28px;
+            color: #fff;
+            margin-top: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .synthesis-flow__title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--accent-lime);
+            margin-bottom: 8px;
+        }
+        .synthesis-flow__subtitle {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            position: relative;
+        }
+        .flow-step-box {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 18px 16px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+        .flow-step-box:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: var(--accent-lime);
+            transform: translateY(-3px);
+        }
+        .flow-step-box__num {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--accent-lime);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .flow-step-box__title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .flow-step-box__desc {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ========== PDF VIEW LK 3 (TAB 5) ========== */
+        .lk-split {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 28px;
+            align-items: start;
+        }
+        .mk-pdf-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--gray-100);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mk-pdf-card__header {
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .mk-pdf-card__header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .mk-pdf-card__icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            background: rgba(26, 92, 255, 0.08);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; color: var(--blue-primary);
+        }
+        .mk-pdf-card__name {
+            font-size: 0.92rem; font-weight: 700; color: var(--dark);
+        }
+        .mk-pdf-card__filetype {
+            font-size: 0.72rem; color: var(--gray-400); font-weight: 600;
+        }
+        .mk-pdf-card__status {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .mk-pdf-card iframe {
+            width: calc(100% - 32px); height: 520px; border: none; display: block;
+            margin: 0 16px; border-radius: 12px;
+            background: #f0f2f5;
+        }
+        .mk-pdf-card__actions {
+            padding: 16px 20px;
+            border-top: 1px solid var(--gray-100);
+            display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+            flex-wrap: wrap;
+        }
+        .mk-pdf-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font); font-weight: 700; font-size: 0.82rem;
+            padding: 9px 18px; border-radius: 10px; border: none;
+            cursor: pointer; text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .mk-pdf-btn--view {
+            background: rgba(26, 92, 255, 0.08); color: var(--blue-primary);
+        }
+        .mk-pdf-btn--view:hover {
+            background: rgba(26, 92, 255, 0.15); transform: translateY(-2px);
+        }
+        .mk-pdf-btn--download {
+            background: var(--blue-primary); color: #fff;
+        }
+        .mk-pdf-btn--download:hover {
+            background: var(--blue-dark); transform: translateY(-2px);
+        }
+
+        /* Sidebar Metadata LK 3 */
+        .lk-info-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-100);
+            margin-bottom: 20px;
+        }
+        .lk-info-card__title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .meta-list {
+            list-style: none;
+            padding: 0; margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .meta-list li {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .meta-label { color: var(--gray-500); font-weight: 500; }
+        .meta-val { color: var(--dark); font-weight: 700; text-align: right; }
+
+        .lk-summary-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-100);
+        }
+        .lk-summary-card__title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+        .lk-summary-card p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        /* ========== PDF MODAL ========== */
+        .pdf-modal {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+            align-items: center; justify-content: center; padding: 24px;
+        }
+        .pdf-modal.active { display: flex; animation: modalIn 0.3s ease both; }
+        @keyframes modalIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .pdf-modal__box {
+            background: var(--white); border-radius: 20px; overflow: hidden;
+            width: 100%; max-width: 950px; max-height: 90vh;
+            display: flex; flex-direction: column;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+            animation: modalSlide 0.3s ease both;
+        }
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(30px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .pdf-modal__header {
+            padding: 16px 20px; display: flex; align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .pdf-modal__title {
+            font-size: 0.95rem; font-weight: 700; color: var(--dark);
+        }
+        .pdf-modal__close {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(0,0,0,0.05); border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--gray-500);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .pdf-modal__close:hover { background: #ff4444; color: #fff; }
+        .pdf-modal iframe {
+            width: 100%; height: 75vh; border: none; display: block;
+        }
+
+        /* ========== PAGE NAVIGATION ========== */
+        .page-nav {
+            max-width: 1100px; margin: 0 auto;
+            padding: 32px 24px 48px;
+            display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        }
+        .page-nav__btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            text-decoration: none; background: var(--white);
+            border: 1px solid var(--gray-100); padding: 14px 24px;
+            border-radius: 14px; font-family: var(--font);
+            font-weight: 700; font-size: 0.88rem; color: var(--dark);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04); cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.3s ease, color 0.3s ease;
+        }
+        .page-nav__btn:hover {
+            border-color: var(--blue-primary); color: var(--blue-primary);
+            box-shadow: 0 8px 24px rgba(26, 92, 255, 0.12);
+            transform: translateY(-2px);
+        }
+        .page-nav__btn--disabled {
+            opacity: 0.35; pointer-events: none;
+        }
+        .page-nav__indicator {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem; letter-spacing: 2px;
+            color: var(--gray-400);
+        }
+
+        /* ========== DARK MODE OVERRIDES ========== */
+        body.dark {
+            background: #060b14;
+            color: #d1d5db;
+        }
+        body.dark .tab-nav { background: #0a1320; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        body.dark .tab-btn { color: var(--gray-400); }
+        body.dark .tab-btn:hover { color: var(--accent-lime); background: rgba(195,255,90,0.06); border-color: rgba(195,255,90,0.15); }
+        body.dark .tab-btn.active { color: #0a1628; background: var(--accent-lime); border-color: var(--accent-lime); box-shadow: 0 4px 14px rgba(195,255,90,0.2); }
+        body.dark .tab-content { background: #060b14; }
+        body.dark .tab-panel__title { color: #f9fafb; }
+        body.dark .tab-panel__desc { color: #9ca3af; }
+        body.dark .content-card { background: #0d1829; border-color: rgba(255,255,255,0.08); box-shadow: 0 4px 24px rgba(0,0,0,0.25); }
+        body.dark .content-card__title { color: #f9fafb; }
+        body.dark .content-card p { color: #9ca3af; }
+        body.dark .content-card__tag { background: rgba(195, 255, 90, 0.1); color: var(--accent-lime); }
+        body.dark .concept-box { background: #091220; border-color: rgba(255,255,255,0.06); }
+        body.dark .concept-box:hover { background: #111d30; border-color: var(--accent-lime); }
+        body.dark .concept-box__name { color: #f9fafb; }
+        body.dark .concept-box__desc { color: #9ca3af; }
+        body.dark .skill-item { background: #091220; color: #f3f4f6; border-left-color: var(--accent-lime); }
+        body.dark .skill-item:hover { background: rgba(195,255,90,0.08); }
+        body.dark .quote-callout { background: rgba(195, 255, 90, 0.05); border-left-color: var(--accent-lime); }
+        body.dark .quote-callout p { color: #f9fafb !important; }
+        body.dark .quote-callout span { color: var(--accent-lime); }
+        body.dark .pillar-card { background: #0d1829; border-color: rgba(255,255,255,0.08); }
+        body.dark .pillar-card:hover { border-color: var(--accent-lime); box-shadow: 0 16px 36px rgba(0,0,0,0.4); }
+        body.dark .pillar-card::before { background: var(--accent-lime); }
+        body.dark .pillar-card__num { color: var(--accent-lime); }
+        body.dark .pillar-card__icon { background: rgba(195, 255, 90, 0.1); color: var(--accent-lime); }
+        body.dark .pillar-card:hover .pillar-card__icon { background: var(--accent-lime); color: #060b14; }
+        body.dark .pillar-card__title { color: #f9fafb; }
+        body.dark .pillar-card__desc { color: #9ca3af; }
+        body.dark .pillar-card__badges { border-top-color: rgba(255,255,255,0.08); }
+        body.dark .pill-badge { background: #091220; color: #d1d5db; border-color: rgba(255,255,255,0.08); }
+        body.dark .integration-cluster { background: #0d1829; border-color: rgba(255,255,255,0.08); }
+        body.dark .integration-cluster__title { color: #f9fafb; }
+        body.dark .integration-cluster__desc { color: #9ca3af; }
+        body.dark .integration-cluster__badge { background: rgba(195, 255, 90, 0.1); color: var(--accent-lime); }
+        body.dark .course-tag-card { background: #091220; border-color: rgba(255,255,255,0.06); }
+        body.dark .course-tag-card__title { color: var(--accent-lime); }
+        body.dark .course-tag-card__role { color: #9ca3af; }
+        body.dark .mk-pdf-card { background: #0d1829; border-color: rgba(255,255,255,0.08); }
+        body.dark .mk-pdf-card__header { border-bottom-color: rgba(255,255,255,0.08); }
+        body.dark .mk-pdf-card__name { color: #f9fafb; }
+        body.dark .mk-pdf-card__icon { background: rgba(195, 255, 90, 0.1); color: var(--accent-lime); }
+        body.dark .mk-pdf-card__actions { border-top-color: rgba(255,255,255,0.08); }
+        body.dark .mk-pdf-btn--view { background: rgba(195, 255, 90, 0.12); color: var(--accent-lime); }
+        body.dark .mk-pdf-btn--view:hover { background: rgba(195, 255, 90, 0.22); }
+        body.dark .mk-pdf-btn--download { background: var(--accent-lime); color: #060b14; }
+        body.dark .mk-pdf-btn--download:hover { background: var(--accent-lime-dark); }
+        body.dark .lk-info-card, body.dark .lk-summary-card { background: #0d1829; border-color: rgba(255,255,255,0.08); }
+        body.dark .lk-info-card__title, body.dark .lk-summary-card__title { color: #f9fafb; }
+        body.dark .meta-val { color: #f9fafb; }
+        body.dark .meta-list li { border-bottom: 1px dashed rgba(255,255,255,0.06); padding-bottom: 6px; }
+        body.dark .meta-label { color: #9ca3af; }
+        body.dark .lk-summary-card p { color: #9ca3af; }
+        body.dark .pdf-modal__box { background: #0d1829; }
+        body.dark .pdf-modal__header { border-bottom-color: rgba(255,255,255,0.08); }
+        body.dark .pdf-modal__title { color: #f9fafb; }
+        body.dark .pdf-modal__close { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+        body.dark .pdf-modal__close:hover { background: #ff4444; color: #fff; }
+        body.dark .page-nav__btn { background: #0d1829; border-color: rgba(255,255,255,0.08); color: #f9fafb; }
+        body.dark .page-nav__btn:hover { border-color: var(--accent-lime); color: var(--accent-lime); }
+        body.dark .page-nav__indicator { color: rgba(255,255,255,0.4); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .lk-split { grid-template-columns: 1fr; }
+            .mk-pdf-card iframe { height: 400px; }
+        }
+        @media (max-width: 768px) {
+            .page-hero { padding: 70px 20px 40px; }
+            .tab-nav__inner { justify-content: flex-start; }
+            .tab-btn { padding: 8px 14px; font-size: 0.75rem; }
+            .content-card { padding: 26px 20px; }
+            .pillar-grid { grid-template-columns: 1fr; }
+            .page-nav__btn { padding: 12px 16px; font-size: 0.8rem; }
+            .pdf-modal iframe { height: 60vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== STICKY MINI BANNER ========== -->
+    <div class="sticky-banner" id="stickyBanner">
+        <a href="index.html" class="sticky-banner__back" aria-label="Kembali ke Beranda">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        </a>
+        <div class="sticky-banner__text">
+            <span class="sticky-banner__subtitle">E-Portfolio Seminar PPG</span>
+            <h2 class="sticky-banner__title">Pengalaman Belajar PPG</h2>
+        </div>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <header class="page-hero" id="hero-pengalaman">
+        <!-- Floating Neon Decor -->
+        <div class="page-hero__decor page-hero__decor--1">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="40" stroke="var(--accent-lime)" stroke-width="3" stroke-dasharray="10 10"/>
+            </svg>
+        </div>
+        <div class="page-hero__decor page-hero__decor--2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+            </svg>
+        </div>
+        <div class="page-hero__decor page-hero__decor--3">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-lime)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 20 2 20"></polygon>
+            </svg>
+        </div>
+        <div class="page-hero__decor page-hero__decor--4">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="4" cy="4" r="2" fill="var(--accent-lime)"/>
+                <circle cx="20" cy="4" r="2" fill="var(--accent-lime)"/>
+                <circle cx="36" cy="4" r="2" fill="var(--accent-lime)"/>
+                <circle cx="4" cy="20" r="2" fill="var(--accent-lime)"/>
+                <circle cx="20" cy="20" r="2" fill="var(--accent-lime)"/>
+                <circle cx="36" cy="20" r="2" fill="var(--accent-lime)"/>
+                <circle cx="4" cy="36" r="2" fill="var(--accent-lime)"/>
+                <circle cx="20" cy="36" r="2" fill="var(--accent-lime)"/>
+                <circle cx="36" cy="36" r="2" fill="var(--accent-lime)"/>
+            </svg>
+        </div>
+
+        <!-- 3D Decor Line Tube -->
+        <div class="page-hero__decor-line">
+            <svg viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="softBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08" />
+                        <stop offset="50%" stop-color="#ffffff" stop-opacity="0.16" />
+                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05" />
+                    </linearGradient>
+                    <filter id="tube3DExp" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#020617" flood-opacity="0.3" result="outer-shadow"/>
+                        <feOffset dx="-5" dy="-5" in="SourceAlpha" result="inner-offset"/>
+                        <feGaussianBlur stdDeviation="6" result="inner-blur"/>
+                        <feComposite operator="out" in="SourceAlpha" in2="inner-blur" result="inverse-alpha"/>
+                        <feFlood flood-color="#000000" flood-opacity="0.3" result="inner-color"/>
+                        <feComposite operator="in" in="inner-color" in2="inverse-alpha" result="inner-shadow"/>
+                        <feOffset dx="4" dy="4" in="SourceAlpha" result="hl-offset"/>
+                        <feGaussianBlur stdDeviation="5" result="hl-blur"/>
+                        <feComposite operator="out" in="SourceAlpha" in2="hl-blur" result="hl-inverse-alpha"/>
+                        <feFlood flood-color="#ffffff" flood-opacity="0.5" result="hl-color"/>
+                        <feComposite operator="in" in="hl-color" in2="hl-inverse-alpha" result="inner-highlight"/>
+                        <feMerge>
+                            <feMergeNode in="outer-shadow"/>
+                            <feMergeNode in="SourceGraphic"/>
+                            <feMergeNode in="inner-shadow"/>
+                            <feMergeNode in="inner-highlight"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <path class="animated-path" 
+                      d="M 50, -50 C 200, 100 250, 200 100, 350 C -50, 500 200, 350 350, 250 C 500, 150 600, 350 800, 350 C 1000, 350 1000, 200 1100, 250" 
+                      stroke="url(#softBlueGrad)" stroke-width="45" stroke-linecap="round" filter="url(#tube3DExp)"/>
+            </svg>
+        </div>
+
+        <a href="index.html" class="page-hero__back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            Kembali ke Beranda
+        </a>
+        <p class="page-hero__label">[03] Refleksi Akhir PPG</p>
+        <h1 class="page-hero__title">PENGALAMAN PPG</h1>
+        <p class="page-hero__subtitle">Dokumentasi refleksi menyeluruh selama mengikuti Program PPG Calon Guru Informatika: visi pendidikan Indonesia, profil guru profesional, tiga pilar aksi karier, dan integrasi antar mata kuliah.</p>
+
+        <!-- Quick Jump Pills -->
+        <div class="page-hero__quick-actions">
+            <button class="hero-pill-btn" onclick="switchTab(0)">
+                <span>🇮🇩</span> Pendidikan Indonesia
+            </button>
+            <button class="hero-pill-btn" onclick="switchTab(1)">
+                <span>👨‍🏫</span> Guru Profesional
+            </button>
+            <button class="hero-pill-btn" onclick="switchTab(2)">
+                <span>🎯</span> 3 Pilar Karier
+            </button>
+            <button class="hero-pill-btn" onclick="switchTab(3)">
+                <span>🔗</span> Integrasi Matkul
+            </button>
+            <button class="hero-pill-btn" onclick="switchTab(4)">
+                <span>📄</span> Dokumen LK 3
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== TAB NAVIGATION ========== -->
+    <nav class="tab-nav">
+        <div class="tab-nav__inner">
+            <button class="tab-btn active" data-tab="tab1">
+                <span>01.</span> Pendidikan Indonesia
+            </button>
+            <button class="tab-btn" data-tab="tab2">
+                <span>02.</span> Guru Profesional
+            </button>
+            <button class="tab-btn" data-tab="tab3">
+                <span>03.</span> 3 Pilar Karier
+            </button>
+            <button class="tab-btn" data-tab="tab4">
+                <span>04.</span> Integrasi Matkul
+            </button>
+            <button class="tab-btn" data-tab="tab5">
+                <span>05.</span> Dokumen LK 3
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== TAB CONTENT ========== -->
+    <main class="tab-content">
+
+        <!-- ==================== TAB 1: PENDIDIKAN DI INDONESIA ==================== -->
+        <section class="tab-panel active" id="tab1">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">01 / 05 &bull; Refleksi Visi Nasional</p>
+                <h2 class="tab-panel__title">Bagaimana Seharusnya Pendidikan di Indonesia?</h2>
+                <p class="tab-panel__desc">Refleksi mendalam terhadap arah, esensi, dan transformasi paradigma pendidikan nasional pasca menjalani rangkaian perkuliahan dan praktik klinis PPG.</p>
+            </div>
+
+            <!-- Card 1: Esensi & Visi Pendidikan -->
+            <article class="content-card">
+                <span class="content-card__tag">Esensi Pendidikan Masa Depan</span>
+                <h3 class="content-card__title">Membentuk Generasi Berkarakter, Berintegritas, dan Bernalar Kritis</h3>
+                <p>Setelah mengikuti serangkaian refleksi pengalaman belajar selama Program PPG, saya menyadari bahwa pendidikan di Indonesia seharusnya mampu membentuk masyarakat yang berkarakter, berintegritas, dan berpikir kritis sehingga tidak mudah terpengaruh oleh berita hoaks maupun diadu domba oleh informasi yang menyesatkan. Visi ini menjadi sangat krusial di era ledakan informasi dan disrupsi kecerdasan buatan, di mana kecakapan kognitif harus berakar kuat pada nilai moral dan ketajaman literasi digital.</p>
+                <p>Visi tersebut tetap kokoh saya pegang, namun setelah berproses di PPG, pemahaman saya kian matang bahwa untuk mewujudkannya diperlukan proses pembelajaran yang dirancang secara tepat, sistematis, dan benar-benar memperhatikan kebutuhan setiap peserta didik. Pendidikan bukan lagi sekadar transmisi materi satu arah dari guru ke siswa, melainkan penciptaan ekosistem belajar yang memanusiakan hubungan.</p>
+
+                <div class="quote-callout">
+                    <p>&ldquo;Pendidikan di Indonesia perlu tidak hanya berorientasi pada penyampaian materi, tetapi juga membangun pengalaman belajar yang bermakna, menghargai perbedaan, dan mengembangkan kemampuan berpikir kritis yang dibutuhkan dalam kehidupan bermasyarakat.&rdquo;</p>
+                    <span>— Lembar Kerja 3 (LK 3) PPG Calon Guru</span>
+                </div>
+            </article>
+
+            <!-- Card 2: 4 Pilar Konseptual Pembelajaran PPG -->
+            <article class="content-card">
+                <span class="content-card__tag">Kerangka Teoretis & Pedagogik</span>
+                <h3 class="content-card__title">Integrasi Empat Konsep Kunci dalam Pembelajaran</h3>
+                <p>Melalui proses perkuliahan PPG, pandangan saya diperkaya oleh perpaduan konsep-konsep pedagogik modern dan kearifan lokal yang saling menguatkan dalam membangun kelas yang inklusif:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-box">
+                        <div class="concept-box__icon">🌿</div>
+                        <h4 class="concept-box__name">Ki Hadjar Dewantara (KHD)</h4>
+                        <p class="concept-box__desc">Pendidikan yang menuntun kodrat alam dan zaman anak. Menempatkan guru sebagai pamong yang mengasuh potensi unik tanpa memaksakan kehendak seragam.</p>
+                    </div>
+                    <div class="concept-box">
+                        <div class="concept-box__icon">🧩</div>
+                        <h4 class="concept-box__name">Universal Design for Learning</h4>
+                        <p class="concept-box__desc">Menghargai keberagaman cara belajar melalui penyediaan multi-representasi materi, keterlibatan aktif, dan ragam ekspresi asesmen bagi seluruh siswa.</p>
+                    </div>
+                    <div class="concept-box">
+                        <div class="concept-box__icon">💖</div>
+                        <h4 class="concept-box__name">Pembelajaran Sosial Emosional</h4>
+                        <p class="concept-box__desc">Menciptakan lingkungan kelas yang mendukung <em>well-being</em> (kesejahteraan emosional), kesadaran diri, empati, dan relasi sosial yang sehat.</p>
+                    </div>
+                    <div class="concept-box">
+                        <div class="concept-box__icon">🌱</div>
+                        <h4 class="concept-box__name">Pola Pikir Bertumbuh (Growth Mindset)</h4>
+                        <p class="concept-box__desc">Memandang kesulitan belajar sebagai ruang bertumbuh. Tidak menjadikan kegagalan alasan memberi hukuman atau label negatif pada siswa.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3: Penyelarasan Perencanaan & Kontekstualitas -->
+            <article class="content-card">
+                <span class="content-card__tag">Implementasi Desain Pembelajaran</span>
+                <h3 class="content-card__title">Keselarasan Konstruktif dan Pembelajaran Kontekstual</h3>
+                <p>Saya menyadari bahwa persiapan merupakan bagian paling fundamental dalam proses pendidikan. Rencana Pelaksanaan Pembelajaran (RPP / Modul Ajar) bukan sebatas dokumen administratif formalitas, melainkan panduan hidup bagi guru untuk memetakan alur pembelajaran, dengan memastikan <strong>tujuan pembelajaran, aktivitas belajar, dan asesmen saling selaras secara konstruktif (constructive alignment)</strong>.</p>
+                <p>Selain itu, pembelajaran perlu dirancang secara <strong>kontekstual</strong> agar peserta didik memahami alasan mereka mempelajari suatu materi dan kaitannya dengan kehidupan nyata mereka sehari-hari. Dalam konteks mata pelajaran Informatika, peserta didik akan jauh lebih antusias dan mudah menemukan makna pembelajaran ketika mereka memahami bagaimana konsep algoritma, computational thinking, atau etika digital berkontribusi memecahkan persoalan riil di lingkungan sekitar mereka.</p>
+            </article>
+        </section>
+
+        <!-- ==================== TAB 2: MENJADI GURU PROFESIONAL ==================== -->
+        <section class="tab-panel" id="tab2">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">02 / 05 &bull; Standar Kompetensi & Realita Klinis</p>
+                <h2 class="tab-panel__title">Apa yang Dapat Saya Lakukan untuk Menjadi Guru Profesional?</h2>
+                <p class="tab-panel__desc">Sintesis kompetensi pedagogik, penguasaan keterampilan mengajar, evaluasi diri, serta seni menyeimbangkan kedekatan emosional dan wibawa di kelas.</p>
+            </div>
+
+            <!-- Card 1: Fondasi Profesionalisme Guru -->
+            <article class="content-card">
+                <span class="content-card__tag">Pilar Profesionalisme</span>
+                <h3 class="content-card__title">Perancangan RPP dan Delapan Keterampilan Dasar Mengajar</h3>
+                <p>Saya menyadari bahwa untuk menjadi guru profesional, saya harus mampu merancang pembelajaran dengan baik, menguasai keterampilan dasar mengajar, serta terus mengembangkan kompetensi diri secara berkesinambungan. Menurut saya, Rencana Pelaksanaan Pembelajaran (RPP) merupakan salah satu hal yang paling krusial karena menjadi pedoman kompas dalam merancang alur belajar yang terarah.</p>
+                <p>Namun demikian, dokumen RPP yang hebat akan kehilangan kekuatannya jika tidak diimbangi dengan penguasaan <strong>delapan keterampilan dasar mengajar</strong> secara luwes di hadapan peserta didik:</p>
+
+                <div class="skills-grid">
+                    <div class="skill-item"><span>1.</span> Membuka & Menutup Pembelajaran</div>
+                    <div class="skill-item"><span>2.</span> Menjelaskan secara Efektif</div>
+                    <div class="skill-item"><span>3.</span> Keterampilan Bertanya</div>
+                    <div class="skill-item"><span>4.</span> Memberi Penguatan Positif</div>
+                    <div class="skill-item"><span>5.</span> Mengadakan Variasi Stimulus</div>
+                    <div class="skill-item"><span>6.</span> Membimbing Diskusi Kelompok</div>
+                    <div class="skill-item"><span>7.</span> Mengelola Kelas Kondusif</div>
+                    <div class="skill-item"><span>8.</span> Mengajar Kelompok & Perorangan</div>
+                </div>
+            </article>
+
+            <!-- Card 2: Pengalaman PPL - Seni Menempatkan Diri -->
+            <article class="content-card">
+                <span class="content-card__tag">Refleksi Pengalaman Lapangan (PPL)</span>
+                <h3 class="content-card__title">Seni Menempatkan Diri: Keseimbangan Ramah dan Tegas Disegani</h3>
+                <p>Melalui pengalaman nyata Praktik Pengalaman Lapangan (PPL) di SMA Negeri 4 Yogyakarta, saya menyadari bahwa menjadi guru bukan hanya tentang menguasai materi dan menyampaikannya kepada peserta didik, tetapi juga tentang <strong>bagaimana menempatkan diri di dalam kelas</strong>.</p>
+                <p>Saya mengalami proses belajar yang sangat berharga dalam menemukan keseimbangan antara menjadi guru yang ramah dan tetap disegani. Ada sebuah dialektika yang harus dikelola secara bijak:</p>
+                
+                <div class="concept-grid">
+                    <div class="concept-box" style="border-left: 4px solid #f59e0b;">
+                        <div class="concept-box__icon">🤝</div>
+                        <h4 class="concept-box__name">Tantangan Hubungan Terlalu Akrab</h4>
+                        <p class="concept-box__desc">Ketika hubungan dengan peserta didik terlalu akrab tanpa batasan jelas, muncul risiko wibawa guru dianggap remeh dan instruksi pembelajaran diabaikan.</p>
+                    </div>
+                    <div class="concept-box" style="border-left: 4px solid #ef4444;">
+                        <div class="concept-box__icon">⚖️</div>
+                        <h4 class="concept-box__name">Tantangan Disiplin yang Kaku</h4>
+                        <p class="concept-box__desc">Sebaliknya, ketika guru bersikap terlalu kaku dan otoriter, ruang kelas menjadi tegang, peserta didik merasa tertekan, dan motivasi belajar memudar.</p>
+                    </div>
+                    <div class="concept-box" style="border-left: 4px solid var(--blue-primary);">
+                        <div class="concept-box__icon">🎯</div>
+                        <h4 class="concept-box__name">Resolusi & Titik Temu</h4>
+                        <p class="concept-box__desc">Membangun hubungan positif yang hangat dan komunikatif, namun tetap menjaga wibawa, ketegasan, dan konsistensi kesepakatan kelas.</p>
+                    </div>
+                </div>
+
+                <p>Saya ingin menjadi sosok guru yang dapat <strong>bersikap ramah tanpa kehilangan wibawa</strong>, serta <strong>mampu menerapkan kedisiplinan tanpa mengorbankan hubungan yang positif</strong> dengan peserta didik.</p>
+            </article>
+
+            <!-- Card 3: Evaluasi Diri & Media Interaktif Digital -->
+            <article class="content-card">
+                <span class="content-card__tag">Refleksi Berkelanjutan & Inovasi</span>
+                <h3 class="content-card__title">Evaluasi Diri, Rencana Alternatif, dan Media Digital Interaktif</h3>
+                <p>Guru profesional adalah pembelajar reflektif (*reflective practitioner*). Saya menyadari bahwa saya harus mampu melakukan evaluasi diri secara jujur dan menyusun rencana alternatif ketika proses pembelajaran di kelas tidak berjalan sesuai skenario awal. Daripada bersikukuh terpaku pada rencana lama, guru harus luwes membaca dinamika kelas, mengenali kendala peserta didik, dan menyesuaikan strategi secara taktis.</p>
+                <p>Ke depannya, khususnya dalam bidang studi <strong>Informatika</strong>, saya berkomitmen untuk mengulik lebih dalam berbagai model pembelajaran aktif (Problem-Based Learning, Project-Based Learning, Game-Based Learning) serta mengintegrasikannya dengan <strong>media digital interaktif</strong> (visualisasi logika, simulator daring, alat kolaborasi visual). Hal ini sangat penting untuk membantu peserta didik memvisualisasikan konsep abstrak Informatika menjadi sesuatu yang konkret, menyenangkan, dan mudah dipahami.</p>
+            </article>
+        </section>
+
+        <!-- ==================== TAB 3: 3 HAL MEMULAI KARIER ==================== -->
+        <section class="tab-panel" id="tab3">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">03 / 05 &bull; Rencana Tindak Lanjut</p>
+                <h2 class="tab-panel__title">Tiga Hal Penting Ketika Memulai Karier Sebagai Guru</h2>
+                <p class="tab-panel__desc">Komitmen aksi nyata dan tiga pilar operasional yang akan saya pegang teguh saat mengawali langkah sebagai pendidik profesional di satuan pendidikan.</p>
+            </div>
+
+            <!-- 3 Pillars Grid -->
+            <div class="pillar-grid">
+                <!-- Pilar 1 -->
+                <div class="pillar-card">
+                    <div class="pillar-card__top">
+                        <span class="pillar-card__num">01</span>
+                        <div class="pillar-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="pillar-card__title">Merancang Pembelajaran dengan Matang</h3>
+                    <p class="pillar-card__desc">Saya akan menyusun RPP / Modul Ajar dengan memperhatikan secara saksama keselarasan antara tujuan pembelajaran, kegiatan, dan asesmen (constructive alignment). Perencanaan yang kokoh ini kemudian diimplementasikan dengan dukungan delapan keterampilan dasar mengajar agar setiap sesi belajar berjalan runtut, terarah, dan bermakna.</p>
+                    <div class="pillar-card__badges">
+                        <span class="pill-badge">Penyelarasan RPP</span>
+                        <span class="pill-badge">8 Keterampilan Mengajar</span>
+                        <span class="pill-badge">Asesmen Autentik</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="pillar-card">
+                    <div class="pillar-card__top">
+                        <span class="pillar-card__num">02</span>
+                        <div class="pillar-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="pillar-card__title">Membangun Hubungan Positif dengan Peserta Didik</h3>
+                    <p class="pillar-card__desc">Saya akan berikhtiar menjadi guru yang ramah, hangat, dan mudah diajak berdiskusi, namun tetap tegas dan disegani. Fokus saya adalah menciptakan iklim kelas yang aman secara psikologis, nyaman, dan inklusif tanpa mengabaikan kedisiplinan dan tanggung jawab belajar, seraya terus mematangkan seni menempatkan diri sebagai teladan.</p>
+                    <div class="pillar-card__badges">
+                        <span class="pill-badge">Ramah & Tegas</span>
+                        <span class="pill-badge">Iklim Kelas Aman</span>
+                        <span class="pill-badge">Disiplin Positif</span>
+                    </div>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="pillar-card">
+                    <div class="pillar-card__top">
+                        <span class="pillar-card__num">03</span>
+                        <div class="pillar-card__icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="pillar-card__title">Terus Mengembangkan Diri & Mengevaluasi Pembelajaran</h3>
+                    <p class="pillar-card__desc">Saya akan membiasakan evaluasi diri secara objektif ketika pembelajaran di kelas tidak berjalan sesuai target. Saya akan sigap merumuskan strategi alternatif, serta konsisten memperdalam pemahaman mengenai model-model pembelajaran mutakhir dan penerapannya melalui media interaktif digital untuk memfasilitasi pemahaman Informatika peserta didik.</p>
+                    <div class="pillar-card__badges">
+                        <span class="pill-badge">Evaluasi Diri Rutin</span>
+                        <span class="pill-badge">Rencana Alternatif</span>
+                        <span class="pill-badge">Media Digital Interaktif</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Summary Card -->
+            <article class="content-card">
+                <span class="content-card__tag">Pernyataan Komitmen</span>
+                <h3 class="content-card__title">Menjadi Pendidik yang Bertumbuh Sepanjang Hayat</h3>
+                <p>Ketiga hal di atas bukan merupakan target sesaat, melainkan kompas komitmen jangka panjang. Menjadi guru profesional bagi saya adalah sebuah perjalanan untuk terus belajar, mengevaluasi praktik mengajar, dan beradaptasi dengan kodrat zaman peserta didik. Dengan perencanaan yang matang, relasi yang manusiawi, dan komitmen evaluasi diri yang konsisten, saya yakin dapat menghadirkan pendidikan Informatika yang berdampak nyata bagi generasi penerus bangsa.</p>
+            </article>
+        </section>
+
+        <!-- ==================== TAB 4: INTEGRASI MATA KULIAH ==================== -->
+        <section class="tab-panel" id="tab4">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">04 / 05 &bull; Keterpaduan Kurikulum PPG</p>
+                <h2 class="tab-panel__title">Integrasi dan Benang Merah Antar Mata Kuliah PPG</h2>
+                <p class="tab-panel__desc">Sintesis bagaimana seluruh 11 mata kuliah yang telah ditempuh pada Semester 1 dan Semester 2 saling terhubung membentuk kompetensi utuh pendidik profesional.</p>
+            </div>
+
+            <!-- Introduction Card -->
+            <article class="content-card">
+                <span class="content-card__tag">Benang Merah Kurikulum</span>
+                <h3 class="content-card__title">Menghubungkan Titik: Dari Filosofi Hingga Praktik Klinis Lapangan</h3>
+                <p>Selama menjalani pendidikan profesi di Universitas Negeri Yogyakarta, mata kuliah yang ditempuh tidak berdiri sendiri sebagai silo-silo pengetahuan yang terpisah, melainkan teranyam menjadi satu kesatuan sistematis. Filosofi memberikan arah tujuan, pemahaman peserta didik memberikan peta kondisi nyata, prinsip asesmen dan pembelajaran menyusun arsitektur instruksional, sementara PPL dan Projek Kepemimpinan menjadi wadah pengujian dan pembuktian klinis di lapangan.</p>
+            </article>
+
+            <!-- 5 Clusters of Integration -->
+            <div class="integration-matrix">
+                <!-- Cluster 1 -->
+                <div class="integration-cluster">
+                    <div class="integration-cluster__header">
+                        <div class="integration-cluster__badge">I</div>
+                        <h3 class="integration-cluster__title">Fondasi Filosofis & Pola Pikir Pendidik</h3>
+                    </div>
+                    <p class="integration-cluster__desc">Membentuk orientasi dasar bahwa pendidikan adalah proses memanusiakan manusia dan menuntun kodrat anak. Guru harus memiliki resiliensi dan keyakinan bahwa setiap potensi dapat berkembang melalui usaha dan strategi yang tepat.</p>
+                    <div class="cluster-courses">
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Filosofi Pendidikan Indonesia (FPI)</h4>
+                            <p class="course-tag-card__role">Menyediakan kompas nilai dasar Ki Hadjar Dewantara, sistem among, dan pendidikan yang memerdekakan lahir batin.</p>
+                        </div>
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Pola Pikir Bertumbuh (Growth Mindset)</h4>
+                            <p class="course-tag-card__role">Membekali guru dan siswa untuk melihat kesulitan dan kegagalan bukan sebagai batas akhir, melainkan gerbang pembelajaran baru.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cluster 2 -->
+                <div class="integration-cluster">
+                    <div class="integration-cluster__header">
+                        <div class="integration-cluster__badge">II</div>
+                        <h3 class="integration-cluster__title">Pemahaman Subjek Belajar & Iklim Emosional Kelas</h3>
+                    </div>
+                    <p class="integration-cluster__desc">Sebelum merancang pembelajaran, guru wajib memahami karakteristik perkembangan kognitif, sosiokultural, dan kesejahteraan emosional peserta didiknya agar intervensi yang diberikan tepat sasaran.</p>
+                    <div class="cluster-courses">
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Pemahaman Peserta Didik & Pembelajarannya (PPDP)</h4>
+                            <p class="course-tag-card__role">Memetakan tahapan perkembangan fisik, kognitif, moral, serta pendekatan Developmentally Appropriate Practice (DAP).</p>
+                        </div>
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Pembelajaran Sosial Emosional (PSE)</h4>
+                            <p class="course-tag-card__role">Menghadirkan keterampilan kesadaran diri (*mindfulness*), manajemen emosi, empati sosial, dan iklim kelas yang aman.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cluster 3 -->
+                <div class="integration-cluster">
+                    <div class="integration-cluster__header">
+                        <div class="integration-cluster__badge">III</div>
+                        <h3 class="integration-cluster__title">Arsitektur Desain Pembelajaran & Asesmen Autentik</h3>
+                    </div>
+                    <p class="integration-cluster__desc">Mengintegrasikan prinsip *Understanding by Design* (UbD), *Teaching at the Right Level* (TaRL), dan *Universal Design for Learning* (UDL) yang dipadukan dengan strategi mengajar yang kreatif dan berbasis teknologi.</p>
+                    <div class="cluster-courses">
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Prinsip Pengajaran & Asesmen I (PMA)</h4>
+                            <p class="course-tag-card__role">Penyelarasan backward design (UbD), perumusan asesmen diagnostik, formatif, dan sumatif yang selaras.</p>
+                        </div>
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Prinsip Pengajaran & Asesmen II (PMAL)</h4>
+                            <p class="course-tag-card__role">Pendalaman diferensiasi kelas, scaffolding, dan implementasi UDL bagi keberagaman profil belajar siswa.</p>
+                        </div>
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Pembelajaran Kreatif & Inovatif (PKI)</h4>
+                            <p class="course-tag-card__role">Inovasi media pembelajaran digital interaktif, gamifikasi, dan metode aktif untuk materi Informatika.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cluster 4 -->
+                <div class="integration-cluster">
+                    <div class="integration-cluster__header">
+                        <div class="integration-cluster__badge">IV</div>
+                        <h3 class="integration-cluster__title">Laboratorium Praktik Klinis Nyata di Sekolah</h3>
+                    </div>
+                    <p class="integration-cluster__desc">Tempat seluruh teori pedagogik diuji, diasah, dan disempurnakan melalui pengalaman mengajar nyata, observasi kelas, dan interaksi langsung dengan siswa di SMA Negeri 4 Yogyakarta.</p>
+                    <div class="cluster-courses">
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">PPL I (Terbimbing)</h4>
+                            <p class="course-tag-card__role">Observasi lingkungan sekolah, asistensi mengajar, dan penerapan siklus pengajaran terbimbing bersama Guru Pamong.</p>
+                        </div>
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">PPL II (Mandiri)</h4>
+                            <p class="course-tag-card__role">Praktik mengajar mandiri penuh, evaluasi klinis mendalam, manajemen kelas riil, dan PTK kolaboratif.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cluster 5 -->
+                <div class="integration-cluster">
+                    <div class="integration-cluster__header">
+                        <div class="integration-cluster__badge">V</div>
+                        <h3 class="integration-cluster__title">Kepemimpinan Transformatif & Keberlanjutan Profesi</h3>
+                    </div>
+                    <p class="integration-cluster__desc">Menyiapkan guru agar tidak berhenti di batas ruang kelas, melainkan mampu menginisiasi perubahan sosial di komunitas dan terus belajar secara berkelanjutan sebagai pembelajar sepanjang hayat.</p>
+                    <div class="cluster-courses">
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Projek Kepemimpinan (PK)</h4>
+                            <p class="course-tag-card__role">Perancangan inisiatif pemberdayaan masyarakat/sekolah melalui manajemen proyek berbasis kolaborasi tim.</p>
+                        </div>
+                        <div class="course-tag-card">
+                            <h4 class="course-tag-card__title">Pengembangan Keprofesian Berkelanjutan (PKB)</h4>
+                            <p class="course-tag-card__role">Membangun budaya refleksi diri (*self-assessment*), literasi ilmiah, dan keterlibatan aktif dalam komunitas praktisi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Flow Synthesis Diagram -->
+            <div class="synthesis-flow">
+                <h3 class="synthesis-flow__title">Alur Integrasi Kompetensi Guru PPG</h3>
+                <p class="synthesis-flow__subtitle">Visualisasi tahapan bagaimana 11 mata kuliah saling mentransformasi profil calon pendidik menuju guru profesional sejati:</p>
+                <div class="flow-steps">
+                    <div class="flow-step-box">
+                        <span class="flow-step-box__num">TAHAP 01</span>
+                        <h4 class="flow-step-box__title">Fondasi Filosofi</h4>
+                        <p class="flow-step-box__desc">FPI & Growth Mindset meletakkan nilai dasar kemerdekaan belajar & resiliensi pendidik.</p>
+                    </div>
+                    <div class="flow-step-box">
+                        <span class="flow-step-box__num">TAHAP 02</span>
+                        <h4 class="flow-step-box__title">Memahami Siswa</h4>
+                        <p class="flow-step-box__desc">PPDP & PSE memetakan potensi kognitif dan menjaga kesejahteraan emosional peserta didik.</p>
+                    </div>
+                    <div class="flow-step-box">
+                        <span class="flow-step-box__num">TAHAP 03</span>
+                        <h4 class="flow-step-box__title">Mendesain Aksi</h4>
+                        <p class="flow-step-box__desc">PMA, PMAL & PKI merumuskan RPP selaras, berdiferensiasi UDL, dan media interaktif.</p>
+                    </div>
+                    <div class="flow-step-box">
+                        <span class="flow-step-box__num">TAHAP 04</span>
+                        <h4 class="flow-step-box__title">Uji Klinis PPL</h4>
+                        <p class="flow-step-box__desc">PPL 1 & 2 menguji keterampilan mengajar dan seni menempatkan diri secara nyata di sekolah.</p>
+                    </div>
+                    <div class="flow-step-box">
+                        <span class="flow-step-box__num">TAHAP 05</span>
+                        <h4 class="flow-step-box__title">Dampak & PKB</h4>
+                        <p class="flow-step-box__desc">PK & PKB mendorong kepemimpinan sosial dan komitmen belajar sepanjang hayat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: DOKUMEN LK 3 (PDF VIEW) ==================== -->
+        <section class="tab-panel" id="tab5">
+            <div class="tab-panel__header">
+                <p class="tab-panel__num">05 / 05 &bull; Artefak Resmi PPG</p>
+                <h2 class="tab-panel__title">Dokumen Lembar Kerja 3 (LK 3)</h2>
+                <p class="tab-panel__desc">Pratinjau lengkap dan akses dokumen LK 3: Refleksi Pengalaman Belajar Selama Mengikuti PPG oleh Nur Isnanto Nugroho.</p>
+            </div>
+
+            <div class="lk-split">
+                <!-- PDF Preview Card -->
+                <div class="mk-pdf-card">
+                    <div class="mk-pdf-card__header">
+                        <div class="mk-pdf-card__header-left">
+                            <div class="mk-pdf-card__icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="mk-pdf-card__name">Lembar Kerja 3 (LK 3)</h3>
+                                <p class="mk-pdf-card__filetype">PDF Document &bull; Refleksi Pengalaman Belajar PPG</p>
+                            </div>
+                        </div>
+                        <span class="mk-pdf-card__status">Terverifikasi</span>
+                    </div>
+
+                    <!-- PDF Iframe Preview -->
+                    <iframe class="preview-iframe" 
+                            data-src="pdf/Nur%20Isnanto%20Nugroho-25105260411-LEMBAR%20KERJA%203%20(LK%203).pdf" 
+                            title="Pratinjau PDF LK 3"></iframe>
+
+                    <!-- Action Buttons -->
+                    <div class="mk-pdf-card__actions">
+                        <button class="mk-pdf-btn mk-pdf-btn--view" 
+                                onclick="openPdfModal('pdf/Nur%20Isnanto%20Nugroho-25105260411-LEMBAR%20KERJA%203%20(LK%203).pdf', 'Lembar Kerja 3 (LK 3) — Nur Isnanto Nugroho')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h6v6"></path>
+                                <path d="M10 14L21 3"></path>
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            </svg>
+                            Layar Penuh
+                        </button>
+                        <a href="pdf/Nur%20Isnanto%20Nugroho-25105260411-LEMBAR%20KERJA%203%20(LK%203).pdf" 
+                           target="_blank" 
+                           rel="noopener"
+                           class="mk-pdf-btn mk-pdf-btn--view">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            Tab Baru
+                        </a>
+                        <a href="pdf/Nur%20Isnanto%20Nugroho-25105260411-LEMBAR%20KERJA%203%20(LK%203).pdf" 
+                           download="Nur Isnanto Nugroho - LK 3 PPG UNY.pdf" 
+                           class="mk-pdf-btn mk-pdf-btn--download">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side Metadata & Summary -->
+                <div class="lk-sidebar">
+                    <!-- Metadata Card -->
+                    <div class="lk-info-card">
+                        <h3 class="lk-info-card__title">Informasi Dokumen</h3>
+                        <ul class="meta-list">
+                            <li>
+                                <span class="meta-label">Nama Dokumen</span>
+                                <span class="meta-val">Lembar Kerja 3 (LK 3)</span>
+                            </li>
+                            <li>
+                                <span class="meta-label">Penyusun</span>
+                                <span class="meta-val">Nur Isnanto Nugroho</span>
+                            </li>
+                            <li>
+                                <span class="meta-label">NIM</span>
+                                <span class="meta-val">25105260411</span>
+                            </li>
+                            <li>
+                                <span class="meta-label">Bidang Studi</span>
+                                <span class="meta-val">PPG Informatika</span>
+                            </li>
+                            <li>
+                                <span class="meta-label">Perguruan Tinggi</span>
+                                <span class="meta-val">Universitas Negeri Yogyakarta</span>
+                            </li>
+                            <li>
+                                <span class="meta-label">Mata Kuliah</span>
+                                <span class="meta-val">Seminar PPG</span>
+                            </li>
+                            <li>
+                                <span class="meta-label">Jumlah Halaman</span>
+                                <span class="meta-val">5 Halaman Resmi</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Summary Card -->
+                    <div class="lk-summary-card">
+                        <h3 class="lk-summary-card__title">Butir Refleksi Dokumen</h3>
+                        <p><strong>1. Pendidikan Indonesia:</strong> Membentuk masyarakat berintegritas dan bernalar kritis melalui prinsip KHD, UDL, PSE, Growth Mindset, dan keterpaduan RPP yang kontekstual.</p>
+                        <p><strong>2. Menjadi Guru Profesional:</strong> Menguasai 8 keterampilan dasar mengajar, menemukan titik temu ramah namun tetap tegas disegani, serta luwes menyusun rencana alternatif pembelajaran.</p>
+                        <p><strong>3. Rencana Tindak Lanjut:</strong> Tiga aksi utama dalam memulai karier: merancang pembelajaran matang, membangun iklim kelas positif, dan terus berinovasi melalui media digital Informatika.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== PDF MODAL ========== -->
+    <div class="pdf-modal" id="pdfModal">
+        <div class="pdf-modal__box">
+            <div class="pdf-modal__header">
+                <span class="pdf-modal__title" id="pdfModalTitle">Dokumen PDF</span>
+                <button class="pdf-modal__close" id="pdfModalClose" aria-label="Tutup Pratinjau">✕</button>
+            </div>
+            <iframe id="pdfModalFrame" src="" title="Tampilan Penuh Dokumen PDF"></iframe>
+        </div>
+    </div>
+
+    <!-- ========== PAGE NAV ========== -->
+    <div class="page-nav" id="pageNav">
+        <button class="page-nav__btn page-nav__btn--disabled" id="prevBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            Sebelumnya
+        </button>
+        <span class="page-nav__indicator" id="navIndicator">01 / 05</span>
+        <button class="page-nav__btn page-nav__btn--next" id="nextBtn">
+            Selanjutnya
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+
+    <!-- ========== DARK MODE TOGGLE ========== -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-toggle__text">LIGHT_MODE</span>
+        <span class="theme-toggle__circle">
+            <svg class="theme-toggle__sun" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg class="theme-toggle__moon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+    </button>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <!-- Kiri: Branding -->
+            <div class="footer__brand">
+                <p class="footer__logo">PPG UNY</p>
+                <p class="footer__copy">&copy; 2026 Nur Isnanto Nugroho. All rights reserved.</p>
+            </div>
+
+            <!-- Tengah: Navigasi -->
+            <nav class="footer__nav">
+                <a href="index.html" class="footer__link">Beranda</a>
+                <a href="semester1.html" class="footer__link">Semester 1</a>
+                <a href="semester2.html" class="footer__link">Semester 2</a>
+                <a href="pengalaman.html" class="footer__link">Pengalaman PPG</a>
+                <a href="index.html#penutup" class="footer__link">Penutup</a>
+                <a href="index.html#quote" class="footer__link">Quote</a>
+            </nav>
+
+            <!-- Kanan: Sosial Media -->
+            <div class="footer__social">
+                <!-- Email -->
+                <a href="mailto:nurisnanto09@gmail.com" class="footer__social-link" aria-label="Email" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M22 4L12 13L2 4"/>
+                    </svg>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/nurisnantonugroho/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram" title="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <circle cx="12" cy="12" r="5"/>
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                    </svg>
+                </a>
+                <!-- Website -->
+                <a href="https://e-porto-nuris.vercel.app/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Website" title="Website">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        <path d="M2 12h20"/>
+                    </svg>
+                </a>
+                <!-- WhatsApp -->
+                <a href="https://wa.me/628121314145" target="_blank" rel="noopener" class="footer__social-link" aria-label="WhatsApp" title="WhatsApp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer__divider"></div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT LOGIC ========== -->
+    <script>
+        // ========== TAB SWITCHING ==========
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const navIndicator = document.getElementById('navIndicator');
+        let currentIndex = 0;
+
+        function switchTab(index) {
+            currentIndex = index;
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabBtns[index].classList.add('active');
+            tabPanels.forEach(p => p.classList.remove('active'));
+            tabPanels[index].classList.add('active');
+            
+            const num = String(index + 1).padStart(2, '0');
+            navIndicator.textContent = `${num} / 05`;
+            prevBtn.classList.toggle('page-nav__btn--disabled', index === 0);
+            nextBtn.classList.toggle('page-nav__btn--disabled', index === tabPanels.length - 1);
+            
+            // Scroll menu tab (horizontal)
+            tabBtns[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            
+            // Auto scroll kembali ke atas saat ganti tab jika posisi scroll sudah jauh ke bawah
+            if (window.scrollY > 400) {
+                window.scrollTo({ top: 320, behavior: 'smooth' });
+            }
+        }
+
+        tabBtns.forEach((btn, i) => btn.addEventListener('click', () => switchTab(i)));
+        prevBtn.addEventListener('click', () => { if (currentIndex > 0) switchTab(currentIndex - 1); });
+        nextBtn.addEventListener('click', () => { if (currentIndex < tabPanels.length - 1) switchTab(currentIndex + 1); });
+
+        // ========== PDF MODAL ==========
+        const pdfModal = document.getElementById('pdfModal');
+        const pdfModalFrame = document.getElementById('pdfModalFrame');
+        const pdfModalTitle = document.getElementById('pdfModalTitle');
+        const pdfModalClose = document.getElementById('pdfModalClose');
+
+        function openPdfModal(src, title) {
+            pdfModalFrame.src = src;
+            pdfModalTitle.textContent = title;
+            pdfModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfModal() {
+            pdfModal.classList.remove('active');
+            pdfModalFrame.src = '';
+            document.body.style.overflow = '';
+        }
+
+        pdfModalClose.addEventListener('click', closePdfModal);
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal) closePdfModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePdfModal();
+        });
+
+        // ========== DARK MODE TOGGLE ==========
+        const themeToggle = document.getElementById('themeToggle');
+        const toggleText = themeToggle.querySelector('.theme-toggle__text');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark');
+            themeToggle.classList.add('active');
+            toggleText.textContent = 'DARK_MODE';
+        }
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            themeToggle.classList.toggle('active');
+            const isDark = document.body.classList.contains('dark');
+            toggleText.textContent = isDark ? 'DARK_MODE' : 'LIGHT_MODE';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // ========== LOAD IFRAME PREVIEW PDF ==========
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.preview-iframe').forEach(iframe => {
+                if (iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                }
+            });
+        });
+
+        // ========== STICKY BANNER ON SCROLL ==========
+        const pageHero = document.querySelector('.page-hero');
+        const stickyBanner = document.getElementById('stickyBanner');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > pageHero.offsetHeight - 50) {
+                stickyBanner.classList.add('is-visible');
+                document.body.classList.add('banner-stuck');
+            } else {
+                stickyBanner.classList.remove('is-visible');
+                document.body.classList.remove('banner-stuck');
+            }
+        });
+    </script>
+
+</body>
+</html>
